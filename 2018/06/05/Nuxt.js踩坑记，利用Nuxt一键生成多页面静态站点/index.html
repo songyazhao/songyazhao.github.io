@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点 | 酷酷哒小站</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文结合实际项目基于 `Nuxt.js@1.4.0` 进行讲解，部分案例摘自 Nuxt.js 官方文档。如需转载，请标明出处。  Nuxt.js简单介绍 为什么使用Nuxt.js? 项目创建 项目配置 nuxt.config.js总览 路由(router) Nuxt模块(modules) 插件(plugins) 页面元信息(head)   页面布局(layout) 状态管理(vuex) 一键">
+<meta name="keywords" content="Vue,Nuxt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点">
+<meta property="og:url" content="http://www.debugger.fun/2018/06/05/Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点/index.html">
+<meta property="og:site_name" content="酷酷哒小站">
+<meta property="og:description" content="本文结合实际项目基于 `Nuxt.js@1.4.0` 进行讲解，部分案例摘自 Nuxt.js 官方文档。如需转载，请标明出处。  Nuxt.js简单介绍 为什么使用Nuxt.js? 项目创建 项目配置 nuxt.config.js总览 路由(router) Nuxt模块(modules) 插件(plugins) 页面元信息(head)   页面布局(layout) 状态管理(vuex) 一键">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-27T07:28:23.915Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点">
+<meta name="twitter:description" content="本文结合实际项目基于 `Nuxt.js@1.4.0` 进行讲解，部分案例摘自 Nuxt.js 官方文档。如需转载，请标明出处。  Nuxt.js简单介绍 为什么使用Nuxt.js? 项目创建 项目配置 nuxt.config.js总览 路由(router) Nuxt模块(modules) 插件(plugins) 页面元信息(head)   页面布局(layout) 状态管理(vuex) 一键">
+  
+    <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head_icon.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85415703-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("jujym3PQqs2CYLtDvL7IzoeG-gzGzoHsz", "VhdH9bslRJKK6mKVS48uU6Ef");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div class="switch">
+      <input type="checkbox">
+      <label></label>
+    </div>
+    <div id="particles-js">
+    </div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">糖醋里脊叉烧包</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">桌游控、健身🐶</p>
+		<p class="header-subtitle">不知名码农、吃货</p>
+		<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+		<p class="header-subtitle">～</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+					        
+								<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 20px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 20px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/songyazhao/songyazhao.github.io">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+        <div class="switch">
+          <input type="checkbox">
+          <label></label>
+        </div>
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">糖醋里脊叉烧包</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">糖醋里脊叉烧包</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">桌游控、健身🐶</p>
+			<p class="header-subtitle">不知名码农、吃货</p>
+			<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+			<p class="header-subtitle">～</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+			        
+						<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/06/05/Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点/" class="article-date">
+  	<time datetime="2018-06-05T10:06:51.000Z" itemprop="datePublished">2018-06-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nuxt/">Nuxt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Vue/">Vue</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2018/06/05/Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- 一件产品，要经历怎样的构思，才能造就不一样体验。 -->
+<!-- 一份设计，要经历怎样的揣摩，才能。。 -->
+<!-- 一个网页，要经历怎样的过程，才能抵达用户面前。 -->
+<p>本文结合实际项目基于 <a href="mailto:`Nuxt.js@1.4.0" target="_blank" rel="noopener">`Nuxt.js@1.4.0</a>` 进行讲解，部分案例摘自 <a href="https://nuxtjs.org" target="_blank" rel="noopener">Nuxt.js</a> 官方文档。<em>如需转载，请标明出处。</em></p>
+<ul>
+<li><a href="#1">Nuxt.js简单介绍</a></li>
+<li><a href="#2">为什么使用Nuxt.js?</a></li>
+<li><a href="#3">项目创建</a></li>
+<li><a href="#4">项目配置</a><ul>
+<li><a href="#4.1">nuxt.config.js总览</a></li>
+<li><a href="#4.2">路由(router)</a></li>
+<li><a href="#4.3">Nuxt模块(modules)</a></li>
+<li><a href="#4.4">插件(plugins)</a></li>
+<li><a href="#4.5">页面元信息(head)</a></li>
+</ul>
+</li>
+<li><a href="#5">页面布局(layout)</a></li>
+<li><a href="#6">状态管理(vuex)</a></li>
+<li><a href="#7">一键静态化</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="1">Nuxt.js简单介绍</h2>
+
+<p>2016 年 10 月 25 日，<a href="https://zeit.co/" target="_blank" rel="noopener">zeit.co</a> 背后的团队对外发布了 <a href="https://zeit.co/blog/next" target="_blank" rel="noopener">Next.js</a>，一个 React 的服务端渲染应用框架。几小时后，与 Next.js 异曲同工，一个基于 Vue.js 的服务端渲染应用框架应运而生，我们称之为：Nuxt.js。</p>
+<p>Nuxt.js 是一个基于 Vue.js 的通用应用框架。通过对客户端/服务端基础架构的抽象组织，Nuxt.js 主要关注的是应用的 UI渲染。Nuxt.js 预设了利用Vue.js开发服务端渲染的应用所需要的各种配置。</p>
+<h2 id="2">为什么使用Nuxt.js?</h2>
+
+<ul>
+<li>SSR（服务端渲染）的页面初始加载时间显然优于单页首屏渲染</li>
+<li>可以方便的对 SEO 进行管理</li>
+<li>无需配置页面路由，内置 <code>vue-rouer</code>，自动依据 pages 目录结构生成对应路由配置</li>
+<li>便捷的 HTML 头部标签管理（vue-meta）</li>
+<li>项目结构自动代码分层</li>
+<li>支持静态化（本文将着重以此展开介绍）</li>
+</ul>
+<h2 id="3">项目创建</h2>
+
+<p>为了便于大家快速使用，Nuxt.js 提供了很多模板</p>
+<p><a href="https://github.com/nuxt-community/starter-template" target="_blank" rel="noopener">starter-template</a>: 基础Nuxt.js模板</p>
+<p><a href="https://github.com/nuxt-community/typescript-template" target="_blank" rel="noopener">typescript-template</a>: 基于Typescript的Nuxt.js模板</p>
+<p><a href="https://github.com/nuxt-community/express-template" target="_blank" rel="noopener">express-template</a>: Nuxt.js + Express</p>
+<p><a href="https://github.com/nuxt-community/koa-template" target="_blank" rel="noopener">koa-template</a>: Nuxt.js + Koa</p>
+<p><a href="https://github.com/nuxt-community/adonuxt-template" target="_blank" rel="noopener">adonuxt-template</a>: Nuxt.js + AdonisJS</p>
+<p><a href="https://github.com/nuxt-community/electron-template" target="_blank" rel="noopener">electron-template</a>: Nuxt.js + Electron<br><br>…</p>
+<p>等等，更多的可以在这里看到 <a href="https://github.com/nuxt-community" target="_blank" rel="noopener">nuxt-community</a></p>
+<p>这里我们使用 <code>starter-template</code>，可以使用 <a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noopener">vue-cli</a> 安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g vue-cli</span><br><span class="line">$ vue init nuxt-community/starter-template nuxt-demo</span><br><span class="line">$ <span class="built_in">cd</span> nuxt-demo</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>生成项目结构如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">nuxt-demo/</span><br><span class="line">├── assets/</span><br><span class="line">├── components/</span><br><span class="line">│   └── AppLogo.vue</span><br><span class="line">├── layouts/</span><br><span class="line">│   └── default.vue</span><br><span class="line">├── middleware/</span><br><span class="line">├── pages/</span><br><span class="line">│   └── index.vue</span><br><span class="line">├── plugins/</span><br><span class="line">│   └── README.md</span><br><span class="line">├── static/</span><br><span class="line">│   └── favicon.ico</span><br><span class="line">├── store/</span><br><span class="line">├── nuxt<span class="selector-class">.config</span><span class="selector-class">.js</span></span><br><span class="line">├── package.json</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure></p>
+<p>可以看出来项目结构还是比较清晰的，接着我们根据业务需求在 <code>vue-cli</code> 脚手架生成的项目基础上扩展和修改出来的目录结构如下(已隐去部分文件)：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">nuxt-demo/</span><br><span class="line">├── api/                                  <span class="comment">//- 接口</span></span><br><span class="line">│   └── index.js</span><br><span class="line">├── assets/                               <span class="comment">//- 需要编译的静态资源，如 scss、less、stylus</span></span><br><span class="line">│   ├── images/                           <span class="comment">//- 图片</span></span><br><span class="line">│   └── styles/                           <span class="comment">//- 样式</span></span><br><span class="line">├── build/                                <span class="comment">//- 自定义的一些编译配置</span></span><br><span class="line">├── components/                           <span class="comment">//- 公用的组件</span></span><br><span class="line">│   ├── dm-toast<span class="selector-class">.vue</span>                      <span class="comment">//- 全局组件`dm-toast`</span></span><br><span class="line">│   └── ...</span><br><span class="line">├── data/                                 <span class="comment">//- 静态数据</span></span><br><span class="line">├── layouts/                              <span class="comment">//- 布局</span></span><br><span class="line">│   ├── components/</span><br><span class="line">│   │   ├── dm-<span class="selector-tag">footer</span><span class="selector-class">.vue</span>                 <span class="comment">//- 公用header</span></span><br><span class="line">│   │   └── dm-<span class="selector-tag">header</span><span class="selector-class">.vue</span>                 <span class="comment">//- 公用footer</span></span><br><span class="line">│   └── default<span class="selector-class">.vue</span>                       <span class="comment">//- 默认布局</span></span><br><span class="line">├── middleware/                           <span class="comment">//- 中间件</span></span><br><span class="line">├── mixins/                               <span class="comment">//- Vue mixins</span></span><br><span class="line">├── pages/                                <span class="comment">//- 页面</span></span><br><span class="line">│   ├── index<span class="selector-class">.vue</span>                         <span class="comment">//- 主页</span></span><br><span class="line">│   └── ...</span><br><span class="line">├── plugins/                              <span class="comment">//- vue插件</span></span><br><span class="line">│   └── dm-tracker.js/                    <span class="comment">//- 挂载utils/tracker.js</span></span><br><span class="line">├── static/                               <span class="comment">//- 无需编译处理的静态资源</span></span><br><span class="line">│   └── images/                           <span class="comment">//- 这里存放了一些通过数据循环出来的图片</span></span><br><span class="line">├── store/                                <span class="comment">//- vuex</span></span><br><span class="line">│   └── index.js</span><br><span class="line">├── utils/                                <span class="comment">//- 工具集</span></span><br><span class="line">│   ├── index.js</span><br><span class="line">│   ├── http<span class="selector-class">.js</span>                           <span class="comment">//- axios</span></span><br><span class="line">│   ├── tracker<span class="selector-class">.js</span>                        <span class="comment">//- PV统计</span></span><br><span class="line">│   └── tracker-uitl.js</span><br><span class="line">├── vendor/                               <span class="comment">//- 第三方的库和插件</span></span><br><span class="line">│   └── index.js</span><br><span class="line">├── nuxt<span class="selector-class">.config</span><span class="selector-class">.js</span>                        <span class="comment">//- Nuxt.js配置文件</span></span><br><span class="line">├── seo<span class="selector-class">.config</span><span class="selector-class">.js</span>                         <span class="comment">//- SEO相关配置文件</span></span><br><span class="line">├── package-lock<span class="selector-class">.json</span>                     <span class="comment">//- npm的版本锁</span></span><br><span class="line">├── package.json</span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure></p>
+<h2 id="4">项目配置</h2>
+
+<p>Nuxt.js 默认的配置涵盖了大部分使用情形，可通过 <code>nuxt.config.js</code> 来覆盖默认的配置，下面相关配置根据实际项目驱动讲解，未涉及到的配置项可查阅 <a href="https://nuxtjs.org/api" target="_blank" rel="noopener">Nuxt.js</a> 文档。</p>
+<h3 id="4.1">nuxt.config.js 总览</h3>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//- Document Common &lt;head&gt;</span></span><br><span class="line">  head: &#123;</span><br><span class="line">    meta: [</span><br><span class="line">      title: <span class="string">'我是一个title'</span>,</span><br><span class="line">      &#123; <span class="attr">charset</span>: <span class="string">'utf-8'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'viewport'</span>, <span class="attr">content</span>: <span class="string">'width=device-width, initial-scale=1'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'renderer'</span>, <span class="attr">content</span>: <span class="string">'webkit'</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">name</span>: <span class="string">'applicable-device'</span>, <span class="attr">content</span>: <span class="string">'pc'</span> &#125;,</span><br><span class="line">      &#123; <span class="string">'http-equiv'</span>: <span class="string">'X-UA-Compatible'</span>, <span class="attr">content</span>: <span class="string">'IE=edge,chrome=1'</span> &#125;,</span><br><span class="line">      &#123; <span class="string">'http-equiv'</span>: <span class="string">'Cache-Control'</span>, <span class="attr">content</span>: <span class="string">'no-transform'</span> &#125;,</span><br><span class="line">      &#123; <span class="string">'http-equiv'</span>: <span class="string">'Cache-Control'</span>, <span class="attr">content</span>: <span class="string">'no-siteapp'</span> &#125;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    link: [</span><br><span class="line">      &#123; <span class="attr">rel</span>: <span class="string">'icon'</span>, <span class="attr">type</span>: <span class="string">'image/x-icon'</span>, <span class="attr">href</span>: <span class="string">'你的icon地址'</span> &#125;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- 这里可以写一些每个页面需要额外引入的一些js代码，比如：百度统计</span></span><br><span class="line">    <span class="comment">//- `alert(1)` 仅为代码示例</span></span><br><span class="line">    script: [&#123;</span><br><span class="line">      type: <span class="string">'text/javascript'</span>,</span><br><span class="line">      innerHTML: <span class="string">`alert(1)`</span></span><br><span class="line">    &#125;],</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- __dangerouslyDisableSanitizers 设置&lt;script&gt;中的内容不被转义。</span></span><br><span class="line">    <span class="comment">//- https://github.com/declandewet/vue-meta#__dangerouslydisablesanitizers-string</span></span><br><span class="line">    __dangerouslyDisableSanitizers: [<span class="string">'script'</span>]</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 页面切换的时候进度条的颜色</span></span><br><span class="line">  loading: &#123; <span class="attr">color</span>: <span class="string">'#77b6ff'</span> &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- modules 可以用来扩展核心功能或者添加一些集成</span></span><br><span class="line">  <span class="comment">//- 这里使用了一个本地开发请求远端接口的反向代理模块 `@nuxtjs/proxy`</span></span><br><span class="line">  <span class="comment">//- https://nuxtjs.org/api/configuration-modules</span></span><br><span class="line">  modules: [</span><br><span class="line">    <span class="string">'@nuxtjs/proxy'</span></span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 上面 modules 中配置了 '@nuxtjs/proxy' 时，此字段才会生效</span></span><br><span class="line">  <span class="comment">//- https://github.com/nuxt-community/proxy-module</span></span><br><span class="line">  proxy: &#123;</span><br><span class="line">    <span class="string">'/api'</span>: <span class="string">'http://xxx.xxx.com'</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 在这里注册 `Vue` 的插件、全局组件或者其他的一些需要挂载到 `Vue` 原型下面的东西</span></span><br><span class="line">  <span class="comment">//- ssr 为 `false` 表示该文件只会在浏览器端被打包引入</span></span><br><span class="line">  <span class="comment">//- https://nuxtjs.org/api/configuration-plugins</span></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="string">'~plugins/dm-toast'</span>,</span><br><span class="line">    &#123; <span class="attr">src</span>: <span class="string">'~plugins/dm-tracker'</span>, <span class="attr">ssr</span>: <span class="literal">false</span> &#125;</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 配置全局样式文件（每个页面都会被引入）</span></span><br><span class="line">  <span class="comment">//- `lang` 可以为该样式文件配置相关 loader 进行转译</span></span><br><span class="line">  css: [</span><br><span class="line">    <span class="string">'animate.css'</span>,</span><br><span class="line">    &#123; <span class="attr">src</span>: <span class="string">'~assets/styles/common.scss'</span>, <span class="attr">lang</span>: <span class="string">'scss'</span> &#125;</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 配置 Nuxt.js 应用生成静态站点的具体方式。</span></span><br><span class="line">  <span class="comment">//- https://nuxtjs.org/api/configuration-generate</span></span><br><span class="line">  generate: &#123;</span><br><span class="line">    <span class="comment">//- 为动态路由添加静态化</span></span><br><span class="line">    <span class="comment">//- 静态化站点的时候动态路由是无法被感知到的</span></span><br><span class="line">    <span class="comment">//- 所以可以预测性的在这里配置</span></span><br><span class="line">    routes: [</span><br><span class="line">      <span class="string">'/1'</span>,</span><br><span class="line">      <span class="string">'/2'</span>,</span><br><span class="line">      <span class="string">'/3'</span></span><br><span class="line">      ...</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- router 属性让你可以个性化配置 Nuxt.js 应用的路由（vue-router）</span></span><br><span class="line">  <span class="comment">//- https://nuxtjs.org/api/configuration-router</span></span><br><span class="line">  router: &#123;</span><br><span class="line">    <span class="comment">//- 中间件在每次路由切换前被调用</span></span><br><span class="line">    middleware: <span class="string">'set-env'</span>,</span><br><span class="line">    <span class="comment">//- 通过 extendRoutes 来扩展或者修改 Nuxt.js 生成的路由表配置</span></span><br><span class="line">    extendRoutes(routes) &#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 编译配置</span></span><br><span class="line">  build: &#123;</span><br><span class="line">    <span class="comment">//- 使用 webpack-bundle-analyzer 分析并可视化构建后的打包文件</span></span><br><span class="line">    <span class="comment">//- 你可以基于分析结果来决定如何优化它</span></span><br><span class="line">    analyze: <span class="literal">true</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- 为客户端和服务端的构建配置进行手动的扩展处理</span></span><br><span class="line">    <span class="comment">//- https://nuxtjs.org/api/configuration-build#extend</span></span><br><span class="line">    extend(config, &#123; isDev, isClient, isServer &#125;) &#123;</span><br><span class="line">      <span class="keyword">if</span> (isDev &amp;&amp; isClient) &#123;</span><br><span class="line">        <span class="comment">//- 使用 ESLint 保证代码规范</span></span><br><span class="line">        config.module.rules.push(&#123;</span><br><span class="line">          enforce: <span class="string">'pre'</span>,</span><br><span class="line">          test: <span class="regexp">/\.(js|vue)$/</span>,</span><br><span class="line">          loader: <span class="string">'eslint-loader'</span>,</span><br><span class="line">          exclude: <span class="regexp">/(node_modules)/</span></span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (!isDev) &#123;</span><br><span class="line">        config.module.rules <span class="comment">//- 覆盖默认 `url-loader` 配置</span></span><br><span class="line">          .find(<span class="function">(<span class="params">rule</span>) =&gt;</span> rule.loader === <span class="string">'url-loader'</span>)</span><br><span class="line">            .options.name = <span class="string">'images/[name].[ext]?v=[hash:7]'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- 这里可以自定义打包后的文件名</span></span><br><span class="line">    <span class="comment">//- `hash` 项目中任何一个文件改动后就会被重新创建</span></span><br><span class="line">    <span class="comment">//- `chunkhash` 是根据模块内容计算出的hash值，对应的文件发生内容变动就会重新计算</span></span><br><span class="line">    <span class="comment">//- 生成如下：</span></span><br><span class="line">    <span class="comment">//- &lt;head&gt;</span></span><br><span class="line">    <span class="comment">//-   ...</span></span><br><span class="line">    <span class="comment">//-   &lt;link href="//cdn.xxx.com/manifest.js?v=8d09730" rel="preload" as="script"&gt;</span></span><br><span class="line">    <span class="comment">//-   &lt;link href="//cdn.xxx.com/vendor.js?v=8d09730" rel="preload" as="script"&gt;</span></span><br><span class="line">    <span class="comment">//-   &lt;link href="//cdn.xxx.com/app.js?v=fea3ec0" rel="preload" as="script"&gt;</span></span><br><span class="line">    <span class="comment">//-   &lt;link href="//cdn.xxx.com/pages_index.js?v=6f7b904" rel="preload" as="script"&gt;</span></span><br><span class="line">    <span class="comment">//-   ...</span></span><br><span class="line">    <span class="comment">//- &lt;/head&gt;</span></span><br><span class="line">    filenames: &#123;</span><br><span class="line">      manifest: <span class="string">'js/manifest.js?v=[hash:7]'</span>,</span><br><span class="line">      vendor: <span class="string">'js/vendor.js?v=[hash:7]'</span>,</span><br><span class="line">      app: <span class="string">'js/app.js?v=[chunkhash:7]'</span>,</span><br><span class="line">      <span class="comment">//- `chunk` 这里这样使用编译会报错，最后面会讲解相关解决方案</span></span><br><span class="line">      chunk: <span class="string">'js/[name].js?v=[chunkhash:7]'</span></span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- 自定义 postcss 配置</span></span><br><span class="line">    <span class="comment">//- https://nuxtjs.org/api/configuration-build#postcss</span></span><br><span class="line">    postcss: [</span><br><span class="line">      <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)(&#123;</span><br><span class="line">        browsers: [<span class="string">'&gt; 1%'</span>, <span class="string">'last 3 versions'</span>, <span class="string">'not ie &lt;= 8'</span>]</span><br><span class="line">      &#125;)</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- 这里可以设置你的CDN地址，生成的静态资源将会基于此CDN地址加上URL前缀</span></span><br><span class="line">    publicPath: <span class="string">'//cdn.xxx.com/'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- Nuxt.js 允许你在生成的 vendor.js 文件中添加一些模块，以减少应用 bundle 的体积</span></span><br><span class="line">    <span class="comment">//- 这里说的是一些你所依赖的第三方模块 (比如 axios)，或者使用频率较高的一些自定义模块</span></span><br><span class="line">    <span class="comment">//- https://nuxtjs.org/api/configuration-build#vendor</span></span><br><span class="line">    vendor: [</span><br><span class="line">      <span class="string">'axios'</span>,</span><br><span class="line">      ...</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4.2">路由(router)</h3>
+
+<p>Nuxt.js 依据 pages 目录结构，自动生成 vue-router 模块的路由配置。</p>
+<p>比如：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">├── pages/</span><br><span class="line">│   ├── b-case/</span><br><span class="line">│   │   ├── home.vue</span><br><span class="line">│   │   ├── home/</span><br><span class="line">│   │   │   └── _type.vue</span><br><span class="line">│   │   └── _id.vue</span><br><span class="line">│   └── index.vue</span><br></pre></td></tr></table></figure></p>
+<p>生成路由配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'b-case-home'</span>,</span><br><span class="line">    path: <span class="string">'/b-case/home'</span>,</span><br><span class="line">    component: <span class="string">'E:\\\\nuxt-demo\\\\pages\\\\b-case\\\\home.vue'</span>,</span><br><span class="line">    chunkName: <span class="string">'pages/b-case/home'</span>,</span><br><span class="line">    children: [&#123;</span><br><span class="line">      name: <span class="string">'b-case-home-type'</span>,</span><br><span class="line">      path: <span class="string">':type?'</span>,</span><br><span class="line">      component: <span class="string">'E:\\\\nuxt-demo\\\\pages\\\\b-case\\\\home\\\\_type.vue'</span>,</span><br><span class="line">      chunkName: <span class="string">'pages/b-case/home/_type'</span></span><br><span class="line">    &#125;]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'b-case-id'</span>,</span><br><span class="line">    path: <span class="string">'/b-case/:id?'</span>,</span><br><span class="line">    component: <span class="string">'E:\\\\nuxt-demo\\\\pages\\\\b-case\\\\_id.vue'</span>,</span><br><span class="line">    chunkName: <span class="string">'pages/b-case/_id'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'index'</span>,</span><br><span class="line">    path: <span class="string">'/'</span>,</span><br><span class="line">    component: <span class="string">'E:\\\\nuxt-demo\\\\pages\\\\index.vue'</span>,</span><br><span class="line">    chunkName: <span class="string">'pages/index'</span></span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>如果你想修改已有路由配置可以在 <code>nuxt.config.js</code> 中添加 <code>route.extendRoutes</code> 配置项，覆盖已有路由或者添加新的路由：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  ...</span><br><span class="line">  router: &#123;</span><br><span class="line">    ...</span><br><span class="line">    extendRoutes(routes) &#123;</span><br><span class="line">      <span class="comment">//- `routes` 是一个包含所所有路由配置信息的参数</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4.3">Nuxt模块(modules)</h3>
+
+<p>如果你对上述路由的配置方式不满意，想要更加个性化的自定义路由，Nuxt.js 社区提供了一款 Nuxt模块 <a href="https://github.com/nuxt-community/router-module" target="_blank" rel="noopener">router-module</a></p>
+<p>使用步骤：</p>
+<p>首先安装这个模块<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @nuxtjs/router --save <span class="comment"># OR yarn add @nuxtjs/router</span></span><br></pre></td></tr></table></figure></p>
+<p>然后在 nuxt.config.js 中添加模块名 到 <code>modules</code> 字段下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports =&#123;</span><br><span class="line">  ...</span><br><span class="line">  modules: [</span><br><span class="line">    <span class="string">'@nuxtjs/router'</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在项目根目录下创建 <code>routes.js</code>，并 <code>export</code> 一个方法 <code>createRouter</code>。这里有一点要记住，不能使用 <code>pages/</code> 这个目录，会和 Nuxt.js 官方的路由机制产生冲突。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'../views/home.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">createRouter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">    mode: <span class="string">'history'</span>,</span><br><span class="line">    routes: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">'/'</span>,</span><br><span class="line">        component: Home</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其他比较常用的 Nuxt.js 模块：</p>
+<p><a href="https://github.com/nuxt-community/axios-module" target="_blank" rel="noopener">axios-module</a>：axios模块，它将网络请求与页面的进度条集成</p>
+<p><a href="https://github.com/nuxt-community/proxy-module" target="_blank" rel="noopener">proxy-module</a>：反向代理模块，本地便捷调试远端接口</p>
+<p><a href="https://github.com/nuxt-community/auth-module" target="_blank" rel="noopener">auth-module</a>：鉴权模块</p>
+<p><a href="https://github.com/nuxt-community/python-module" target="_blank" rel="noopener">python-module</a>：用 Python 编写 Nuxt.js 应用程序</p>
+<p><a href="https://github.com/nuxt-community/pwa-module" target="_blank" rel="noopener">pwa-module</a>：把你的站点变成 <a href="https://developers.google.com/web/progressive-web-apps/" target="_blank" rel="noopener">pwa</a> 渐进式网络应用</p>
+<p>配置方法比较类似，这里不作详细讲解</p>
+<h3 id="4.4">插件(plugins)</h3>
+
+<p>插件可以让我们向 Vue 注入一些使用率比较高的属性或者方法，这里我们讲解一个埋点的插件是如何实现的。</p>
+<p><em>在讲解埋点之前我们需要先了解一下PV的概念：PV(page view)，即页面浏览量，或点击量，PV之于网站，就像收视率之于电视。</em></p>
+<p>通过 <code>plugins</code> <a href="#4.1">配置项</a>，我们可以轻而易举的在 Vue 中使用插件。同时我们需要在 <code>plugins</code> 目录下创建对应的文件，以保证配置项可以正确的加载这个文件。</p>
+<blockquote>
+<p>plugins/dm-tracker.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//- 将发起pv统计的方法挂载到 Vue 原型下</span></span><br><span class="line"><span class="comment">//- 让每个组件都能通过 `this.$tracker` 访问</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123; trackerPlugins &#125; <span class="keyword">from</span> <span class="string">'../utils/tracker.js'</span></span><br><span class="line"></span><br><span class="line">Vue.use(trackerPlugins)</span><br></pre></td></tr></table></figure>
+<p><code>utils/tracker.js</code> 里是一些发起 <em>PV</em> 统计所调用的代码（隐去了部分业务代码）。</p>
+<blockquote>
+<p>utils/tracker.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发起PV统计</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; caFrom - ev: @ca_from</span></span><br><span class="line"><span class="comment"> * @param &#123;Object&#125; vueRouteName - vm.$route.name</span></span><br><span class="line"><span class="comment"> * @return &#123;Promise&#125; 成功`then`或者失败`catch`的回调</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> tracker = <span class="function">(<span class="params">caFrom, vueRouteName</span>) =&gt;</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> tracker</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> trackerPlugins = &#123;</span><br><span class="line">  install(Vue, options) &#123;</span><br><span class="line">    Vue.prototype.$tracker = tracker</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们发现几乎每次初始化进入或者跳转到一个新的页面都需要调用 <code>this.$tracker</code> 这个方法，要是在每个页面文件里加岂不是很麻烦，况且如果将埋点深入到业务层后期维护更新不免产生一些不必要的繁琐，所以我们在 <code>layout/default.vue</code> 里面对 <code>$route</code> 进行监听，同时设置 watch 参数 <code>immediate: true</code>，便可针对每个页面实现这个功能。</p>
+<blockquote>
+<p>layout/default.vue</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="comment">//- 通过监听路由变化，得到不同页面的 pv 统计参数，同时 `immediate: true` 使得每次页面初始进来也会默认执行一次</span></span><br><span class="line">    <span class="keyword">this</span>.$watch(<span class="string">'$route'</span>, (&#123; name &#125;) =&gt; <span class="keyword">this</span>.$tracker(<span class="string">'-'</span>, name), &#123; <span class="attr">immediate</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>至此，就完成了一个 <em>PV</em> 统计插件。</p>
+<h3 id="4.5">页面元信息(head)</h3>
+
+<p>Nuxt.js 文档是这么说的：<br><br>使用 <code>head</code> 方法可以设置当前页面的头部标签，在 <code>head</code> 方法里可通过 <code>this</code> 关键字来获取组件的数据，所以你可以利用页面组件的数据来个性化设置 meta 标签。为了避免子组件中的 meta 标签不能正确覆盖父组件中相同的标签而产生重复的现象，建议利用 <code>hid</code> 键为 meta 标签配一个唯一的标识编号。请阅读关于 <a href="https://github.com/declandewet/vue-meta#lists-of-tags" target="_blank" rel="noopener">vue-meta</a> 的更多信息。</p>
+<p>官方示例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; title &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  data () &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">      title: <span class="string">'Hello World!'</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;,</span></span><br><span class="line"><span class="undefined">  head () &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="actionscript">      title: <span class="keyword">this</span>.title,</span></span><br><span class="line"><span class="undefined">      meta: [</span></span><br><span class="line"><span class="actionscript">        &#123; hid: <span class="string">'description'</span>, name: <span class="string">'description'</span>, content: <span class="string">'My custom description'</span> &#125;</span></span><br><span class="line"><span class="undefined">      ]</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>根据官方文档的描述，我们了解到页面里的 head 配置优先级高于 <code>nuxt.config.js</code> 中的 head，就是说同等的配置会覆盖 <code>nuxt.config.js</code> 中的 head 相关位置的配置。但是这个等同覆盖的条件是你为它设置了同一个 <code>hid</code>，它会以此作为等同替换的条件去查找相关 dom 元素进行替换。</p>
+<p>因为项目生成的是多页面静态站点，很多页面需要配置的 meta 多少有些不一样，深入到每一个页面去写单独的配置信息不免繁琐了许多，所以我们可以在 <code>nuxt.config.js</code> 的 <code>head</code> 字段中将公用的一些 <code>head</code> 信息放在里面；所以我们是不是可以把它单独抽离出来作为一个配置文件，并和每个页面的路由名字(<code>$route.name</code>)关联起来，这样按照理想格式的 <code>seo.config.js</code> 就诞生了。</p>
+<p>seo的配置文件写好了，接下来我们应该怎么才能注入这个配置呢，很简单，只需要在 <code>default.vue</code> 的 <code>head</code> 字段下将不同页面的配置，将他们关联起来。这样就达到了通过每个页面的路由名字(<code>$route.name</code>)来映射和渲染对应的 meta。</p>
+<blockquote>
+<p>layout/default.vue</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dm-header</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nuxt</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dm-footer</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> DmHeader <span class="keyword">from</span> <span class="string">'./components/dm-header'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> DmFooter <span class="keyword">from</span> <span class="string">'./components/dm-footer'</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> heads = <span class="function"><span class="params">seo</span> =&gt;</span> <span class="function"><span class="keyword">function</span> <span class="title">getHeadsMap</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">const</span> map = &#123;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">  <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> seo) &#123;</span></span><br><span class="line"><span class="undefined">    map[key] = seo[key].head</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="actionscript">  <span class="keyword">return</span> map</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">const</span> routeMapHead = heads(<span class="built_in">require</span>(<span class="string">'../seo.config'</span>))</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  components: &#123; DmHeader, DmFooter &#125;,</span></span><br><span class="line"><span class="undefined">  computed: &#123; routeMapHead &#125;,</span></span><br><span class="line"><span class="undefined">  head() &#123;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//- SEO 的中心化管理, 根据路由 `$route.name` 映射 Document  &lt;head&gt;</span></span></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> route = <span class="keyword">this</span>.$route</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">const</span> head = <span class="keyword">this</span>.routeMapHead[route.name]</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">return</span> <span class="keyword">typeof</span> head === <span class="string">'function'</span> ? head(route) : head</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>seo.config.js</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//- 根据路由 `$route.name` 映射配置</span></span><br><span class="line"><span class="comment">//- path - 页面的访问路径</span></span><br><span class="line"><span class="comment">//- head - Document &lt;head&gt;，页面的元信息</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="string">'index'</span>: &#123;</span><br><span class="line">    head: &#123;</span><br><span class="line">      title: <span class="string">'我是首页'</span>,</span><br><span class="line">      meta: [</span><br><span class="line">        &#123; <span class="attr">hid</span>: <span class="string">'keywords'</span>, <span class="attr">name</span>: <span class="string">'keywords'</span>, <span class="attr">content</span>: <span class="string">''</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">hid</span>: <span class="string">'description'</span>, <span class="attr">name</span>: <span class="string">'description'</span>, <span class="attr">content</span>: <span class="string">''</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">'mobile-agent'</span>, <span class="attr">content</span>: <span class="string">'format=wml; url=//该页面对应的移动端网址/'</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">'mobile-agent'</span>, <span class="attr">content</span>: <span class="string">'format=xhtml; url=//该页面对应的移动端网址/'</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">'mobile-agent'</span>, <span class="attr">content</span>: <span class="string">'format=html5; url=//该页面对应的移动端网址/'</span> &#125;</span><br><span class="line">      ],</span><br><span class="line">      link: [</span><br><span class="line">        &#123; <span class="attr">rel</span>: <span class="string">'alternate'</span>, <span class="attr">type</span>: <span class="string">'applicationnd.wap.xhtml+xml'</span>, <span class="attr">media</span>: <span class="string">'handheld'</span>, <span class="attr">href</span>: <span class="string">'//该页面对应的移动端网址/'</span> &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//- head 可以是一个 `function`</span></span><br><span class="line">  <span class="comment">//- `function` 中会接收过来一个参数 `route`，表示当前页面的路由信息</span></span><br><span class="line">  <span class="comment">//- 可以根据这个做一些动态的配置信息</span></span><br><span class="line">  <span class="comment">//- 比如动态路由生成的页面中的 meta 信息，可能会根据页面内容来决定</span></span><br><span class="line">  <span class="string">'name'</span>: &#123;</span><br><span class="line">    head(route) &#123;</span><br><span class="line">      <span class="keyword">const</span> titles = &#123;</span><br><span class="line">        <span class="string">'1'</span>: <span class="string">'ofo小黄车'</span>,</span><br><span class="line">        <span class="string">'2'</span>: <span class="string">'盒马生鲜'</span>,</span><br><span class="line">        <span class="string">'3'</span>: <span class="string">'顺丰速运'</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        title: <span class="string">`<span class="subst">$&#123;titles[route.params.id]&#125;</span>_客户案例-斗米网`</span>,</span><br><span class="line">        meta: [</span><br><span class="line">          &#123; <span class="attr">name</span>: <span class="string">'mobile-agent'</span>, <span class="attr">content</span>: <span class="string">`format=wml; url=//该页面对应的移动端网址<span class="subst">$&#123;route.fullPath&#125;</span>`</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">name</span>: <span class="string">'mobile-agent'</span>, <span class="attr">content</span>: <span class="string">`format=xhtml; url=//该页面对应的移动端网址<span class="subst">$&#123;route.fullPath&#125;</span>`</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">name</span>: <span class="string">'mobile-agent'</span>, <span class="attr">content</span>: <span class="string">`format=html5; url=//该页面对应的移动端网址<span class="subst">$&#123;route.fullPath&#125;</span>`</span> &#125;</span><br><span class="line">        ],</span><br><span class="line">        link: [</span><br><span class="line">          &#123; <span class="attr">rel</span>: <span class="string">'alternate'</span>, <span class="attr">type</span>: <span class="string">'applicationnd.wap.xhtml+xml'</span>, <span class="attr">media</span>: <span class="string">'handheld'</span>, <span class="attr">href</span>: <span class="string">`//该页面对应的移动端网址<span class="subst">$&#123;route.fullPath&#125;</span>`</span> &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="5">页面布局(layout)</h2>
+
+<p>Nuxt.js 中，抽象出来一个新的概念：layout，这样将页面划分为三层：1. layout、2. page、3. component，很方便的在多种布局方案中切换。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">+------------------------------+</span><br><span class="line">|            layout            |</span><br><span class="line">|                              |</span><br><span class="line">|   +----------------------+   |</span><br><span class="line">|   |         page         |   |</span><br><span class="line">|   |                      |   |</span><br><span class="line">|   |   +--------------+   |   |</span><br><span class="line">|   |   |  component   |   |   |</span><br><span class="line">|   |   +--------------+   |   |</span><br><span class="line">|   |                      |   |</span><br><span class="line">|   |   +--------------+   |   |</span><br><span class="line">|   |   |  component   |   |   |</span><br><span class="line">|   |   +--------------+   |   |</span><br><span class="line">|   |                      |   |</span><br><span class="line">|   |   +--------------+   |   |</span><br><span class="line">|   |   |  component   |   |   |</span><br><span class="line">|   |   +--------------+   |   |</span><br><span class="line">|   +----------------------+   |</span><br><span class="line">|                              |</span><br><span class="line">+------------------------------+</span><br></pre></td></tr></table></figure>
+<p>在页面 <code>pages/*.vue</code> 文件中可以指定一种布局，不指定的时候会使用默认布局 <code>default</code>。</p>
+<p>比如以下目录结构：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── layouts/                              <span class="comment">//- 布局</span></span><br><span class="line">│   ├── components/</span><br><span class="line">│   │   ├── dm-<span class="selector-tag">footer</span><span class="selector-class">.vue</span>                 <span class="comment">//- 公用header</span></span><br><span class="line">│   │   └── dm-<span class="selector-tag">header</span><span class="selector-class">.vue</span>                 <span class="comment">//- 公用footer</span></span><br><span class="line">│   ├── box.vue</span><br><span class="line">│   └── default<span class="selector-class">.vue</span>                       <span class="comment">//- 默认布局</span></span><br><span class="line">├── pages/                                <span class="comment">//- 页面</span></span><br><span class="line">│   └── index.vue</span><br></pre></td></tr></table></figure>
+<p>使用 <code>box.vue</code> 的布局，<code>&lt;nuxt/&gt;</code> 对应页面部分，类似 Vue 的 slot</p>
+<blockquote>
+<p>layouts/box.vue</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dm-header</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">nuxt</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dm-footer</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> DmHeader <span class="keyword">from</span> <span class="string">'./components/dm-header'</span></span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> DmFooter <span class="keyword">from</span> <span class="string">'./components/dm-footer'</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="undefined">  components: &#123; DmHeader, DmFooter &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>pages/index.vue<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="actionscript">  layout: <span class="string">'box'</span></span></span><br><span class="line"><span class="undefined">  ...</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="6">状态管理(vuex)</h2>
+
+<p>像普通的 Vue 应用一样，在 Nuxt.js 中也可以使用 <code>vuex</code>，而且无需额外 <code>npm install vuex --save</code> 和配置，只要直接在项目根目录创建 <code>store</code> 文件夹，Nuxt.js 会自动去寻找下面的 <code>.js</code> 文件，并自动进行状态树的模块划分。</p>
+<p>Nuxt.js 支持两种使用 <code>store</code> 的方式：</p>
+<p>普通方式：返回一个 Vuex.Store 实例，感觉很眼熟有木有</p>
+<blockquote>
+<p>store/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    counter: <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      state.counter++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>模块方式：store 目录下的每个 <code>.js</code> 文件会被转换成为状态树指定命名的子模块，<code>index.js</code> 会被作为根模块</p>
+<blockquote>
+<p>store/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">  counter: <span class="number">0</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  increment (state) &#123;</span><br><span class="line">    state.counter++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>store/todos.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> state = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">  list: []</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  toggle (state, todo) &#123;</span><br><span class="line">    todo.done = !todo.done</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>最终渲染出来的状态树：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123; <span class="attr">counter</span>: <span class="number">0</span> &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    increment (state) &#123;</span><br><span class="line">      state.counter++</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  modules: &#123;</span><br><span class="line">    todos: &#123;</span><br><span class="line">      state: &#123;</span><br><span class="line">        list: []</span><br><span class="line">      &#125;,</span><br><span class="line">      mutations: &#123;</span><br><span class="line">        toggle (state, &#123; todo &#125;) &#123;</span><br><span class="line">          todo.done = !todo.done</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p></p><h3 id="7">一键静态化</h3><br>使用下面的命令生成应用的静态目录和文件：<p></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run generate</span><br></pre></td></tr></table></figure>
+<p>然后会在项目根目录生成 <code>dist</code> 目录，静态化后的资源都在其内(html、js、css…)</p>
+<p>当然，在静态化的时候还是遇到了一些问题：我们有一个专门放置静态资源的 CDN 分发服务器，所以每次版本更新的时候需要版本智能更新(不然用户访问到的可能就是旧的资源)，即对应的模块内容发生改变时才去更新这个版本号，虽然可以通过 <code>js/[name].[chunkhash:7].js</code> 这样的配置实现，但是 CDN 访问到的静态资源是通过 git 控制上线的，所以这样生成的静态资源，文件名每次可能不一样，这样就会越来越多，git 需要定时清理，比较麻烦。于是才有了这样一个两全的方案：既控制了版本更新，也让文件名不产生变动。</p>
+<p>就是如下配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  ...</span><br><span class="line">  build: &#123;</span><br><span class="line">    ...</span><br><span class="line">    filenames: &#123;</span><br><span class="line">      ...</span><br><span class="line">      chunk: <span class="string">'js/[name].js?v=[chunkhash:7]'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>想法很丰满，现实很骨感，在 <code>nuxt.config.js</code> 中使用这样的配置静态化编译的时候会报错 <code>Cannot find module &#39;pages_index.js?v=6f7b904...</code>，(⊙o⊙)…经过一系列的源码追踪发现是<code>vue-server-renderer</code> 这个模块的 BUG。</p>
+<p>虽然向官方提了相关 issue ，但是因不可抗拒的因素暂时无法修复。</p>
+<p><code>vue-server-renderer/server-plugin.js</code> 78行 <strong>asset.name.match(/.js$/)</strong> 这个判断里的正则明显把我们设定的格式 <code>js/[name].js?v=[chunkhash:7]</code> 过滤掉了，不会走这个判断，所以我们只要想办法把这个判断条件改一下，让它走这里。发现他同文件上面有个 <code>isJS</code> 函数，这样就省事多了，我们可以直接调用。</p>
+<p>所以我们如果改源码的话只需要把这里 <strong>asset.name.match(/.js$/)</strong> 替换为 <strong>isJS(asset.name)</strong> 就行了。但是改源码总归不好，因为并不能保证团队其他成员的机器上模块库一致。投机取巧，既然直接修改不好，那就间接修改呗。</p>
+<p>开始动手，先安装一个 npm 的模块：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install shelljs -D <span class="comment"># OR yarn add shelljs -D</span></span><br></pre></td></tr></table></figure></p>
+<p>接着在项目下新建两个文件：</p>
+<ul>
+<li>build/nuxt-generate.js：用来执行静态化的一些命令</li>
+<li>build/vue-server-renderer.patch.js：给 <code>vue-server-renderer</code> 模块打补丁</li>
+</ul>
+<blockquote>
+<p>build/nuxt-generate.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> shell = <span class="built_in">require</span>(<span class="string">'shelljs'</span>)</span><br><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> nuxt = resolve(__dirname, <span class="string">'../node_modules/.bin/nuxt'</span>)</span><br><span class="line"><span class="keyword">const</span> logProvider = <span class="built_in">require</span>(<span class="string">'consola'</span>).withScope(<span class="string">'nuxt:generate'</span>)</span><br><span class="line"></span><br><span class="line">shell.exec(<span class="string">`npm run patch`</span>, (code, stdout, stderr) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</span><br><span class="line">    logProvider.error(stderr)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//- 上面的命令执行成功之后在执行下面的命令</span></span><br><span class="line">  shell.exec(<span class="string">`<span class="subst">$&#123;nuxt&#125;</span> generate`</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>build/vue-server-renderer.patch.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; resolve &#125; = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> SSRJSPath = resolve(__dirname, <span class="string">'../node_modules/vue-server-renderer/server-plugin.js'</span>)</span><br><span class="line"><span class="keyword">const</span> consola = <span class="built_in">require</span>(<span class="string">'consola'</span>)</span><br><span class="line"><span class="keyword">const</span> logProvider = consola.withScope(<span class="string">'vue:patch'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = VueSSRPatch()</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 对 `vue-server-renderer/server-plugin.js` 源码内容进行替换</span></span><br><span class="line"><span class="comment"> * asset.name.match(/\.js$/)</span></span><br><span class="line"><span class="comment"> * =&gt;</span></span><br><span class="line"><span class="comment"> * isJS(asset.name)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">VueSSRPatch</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">//- 检测该模块是否存在</span></span><br><span class="line">  <span class="keyword">if</span> (fs.existsSync(SSRJSPath)) &#123;</span><br><span class="line">    <span class="keyword">let</span> regexp = <span class="regexp">/asset\.name\.match\(\/\\\.js\$\/\)/</span></span><br><span class="line">    <span class="keyword">let</span> SSRJSContent = fs.readFileSync(SSRJSPath, <span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">//- 检测是否存在需要替换的内容(通常是指该项目在本机第一次运行)</span></span><br><span class="line">    <span class="keyword">if</span> (regexp.test(SSRJSContent)) &#123;</span><br><span class="line">      logProvider.start(<span class="string">`发现vue-server-renderer模块，开始执行修补操作！`</span>)</span><br><span class="line"></span><br><span class="line">      SSRJSContent = SSRJSContent.replace(regexp, <span class="string">'isJS(asset.name)'</span>)</span><br><span class="line">      fs.writeFileSync(SSRJSPath, SSRJSContent, <span class="string">'utf8'</span>)</span><br><span class="line"></span><br><span class="line">      logProvider.ready(<span class="string">`修补完毕！`</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    logProvider.warn(<span class="string">`该模块已修补过，无需再次修补，可直接运行\`npm run dev\` 或 \`npm run gen\``</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  logProvider.warn(<span class="string">`未发现该模块，跳出本次修复！`</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>最后在 <code>package.json</code> 中 <code>scripts</code> 添加 <code>gen</code> 和 <code>patch</code> 两条命令：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"nuxt"</span>,</span><br><span class="line">  <span class="string">"generate"</span>: <span class="string">"nuxt generate"</span>,</span><br><span class="line">  <span class="string">"patch"</span>: <span class="string">"node build/vue-server-renderer.patch"</span>,</span><br><span class="line">  <span class="string">"gen"</span>: <span class="string">"node build/nuxt-generate"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>patch</strong>：本机第一次运行或者更新相关模块(vue-server-renderer)时需要执行一次。</p>
+<p><strong>gen</strong>：<br><code>npm run patch</code> 和 <code>npm run generate</code> 的合并命令，就是说会先后执行这两个，方便本机第一次使用。如果本机执行过 <code>npm run patch</code> 可直接 <code>npm run generate</code>，生成相关静态页。</p>
+<h3 id="本人文笔拙劣，如有描述不当，欢迎各路大神拍砖！"><a href="#本人文笔拙劣，如有描述不当，欢迎各路大神拍砖！" class="headerlink" title="本人文笔拙劣，如有描述不当，欢迎各路大神拍砖！"></a>本人文笔拙劣，如有描述不当，欢迎各路大神拍砖！</h3>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/27/利用Certbot免费实现全站https化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          CentOS7.2下利用Certbot免费实现全站https化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/04/node-canvas的安装，node-gyp踩坑记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">node-canvas的安装，node-gyp踩坑记</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share?uid=2120416" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript">
+		var jiathis_config = {data_track_clickback:'true'};
+	</script>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2120416" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点" data-title="Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点" data-url="http://www.debugger.fun/2018/06/05/Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"songyazhao"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2018 糖醋里脊叉烧包
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

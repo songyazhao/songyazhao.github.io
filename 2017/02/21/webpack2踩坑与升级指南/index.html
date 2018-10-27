@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>webpack2踩坑与升级指南 | 酷酷哒小站</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近前端聊得最多的莫过于 某某某2.0发布了，作为前端狗即感兴奋又觉苦逼。然而，webpack也不例外，一个东西的新版发布，文档什么的都得跟上，然而现在好像资料并不多，官方的说法是，webpack1和2在使用上并没有太大的区别。 好吧，那就折腾折腾webpack2吧。">
+<meta name="keywords" content="Webpack2,升级指南">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack2踩坑与升级指南">
+<meta property="og:url" content="http://www.debugger.fun/2017/02/21/webpack2踩坑与升级指南/index.html">
+<meta property="og:site_name" content="酷酷哒小站">
+<meta property="og:description" content="最近前端聊得最多的莫过于 某某某2.0发布了，作为前端狗即感兴奋又觉苦逼。然而，webpack也不例外，一个东西的新版发布，文档什么的都得跟上，然而现在好像资料并不多，官方的说法是，webpack1和2在使用上并没有太大的区别。 好吧，那就折腾折腾webpack2吧。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-27T07:28:23.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack2踩坑与升级指南">
+<meta name="twitter:description" content="最近前端聊得最多的莫过于 某某某2.0发布了，作为前端狗即感兴奋又觉苦逼。然而，webpack也不例外，一个东西的新版发布，文档什么的都得跟上，然而现在好像资料并不多，官方的说法是，webpack1和2在使用上并没有太大的区别。 好吧，那就折腾折腾webpack2吧。">
+  
+    <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head_icon.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85415703-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("jujym3PQqs2CYLtDvL7IzoeG-gzGzoHsz", "VhdH9bslRJKK6mKVS48uU6Ef");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div class="switch">
+      <input type="checkbox">
+      <label></label>
+    </div>
+    <div id="particles-js">
+    </div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">糖醋里脊叉烧包</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">桌游控、健身🐶</p>
+		<p class="header-subtitle">不知名码农、吃货</p>
+		<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+		<p class="header-subtitle">～</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+					        
+								<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 20px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 20px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/songyazhao/songyazhao.github.io">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+        <div class="switch">
+          <input type="checkbox">
+          <label></label>
+        </div>
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">糖醋里脊叉烧包</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">糖醋里脊叉烧包</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">桌游控、健身🐶</p>
+			<p class="header-subtitle">不知名码农、吃货</p>
+			<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+			<p class="header-subtitle">～</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+			        
+						<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-webpack2踩坑与升级指南" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/21/webpack2踩坑与升级指南/" class="article-date">
+  	<time datetime="2017-02-21T03:25:04.000Z" itemprop="datePublished">2017-02-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack2踩坑与升级指南
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack2/">Webpack2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/升级指南/">升级指南</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JS/">JS</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2017/02/21/webpack2踩坑与升级指南/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="webpack2踩坑与升级指南">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近前端聊得最多的莫过于 <strong>某某某2.0发布了</strong>，作为前端狗即感兴奋又觉苦逼。然而，webpack也不例外，一个东西的新版发布，文档什么的都得跟上，然而现在好像资料并不多，官方的说法是，webpack1和2在使用上并没有太大的区别。 好吧，那就折腾折腾webpack2吧。<br><a id="more"></a></p>
+<h2 id="Install-Webpack-2"><a href="#Install-Webpack-2" class="headerlink" title="Install Webpack 2"></a>Install Webpack 2</h2><p>第一步，当然是安装最新版本的webpack2，不过因为还没正式发布，所以咱们就指定一个版本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack@2.1.0-beta.25</span><br></pre></td></tr></table></figure>
+<p>如果你还用到其他的webpack插件（这假设简直是多余），那很可能就需要升级到2.0。</p>
+<p>例如 <code>extract-text-webpack-plugin</code>，同样也在2.0的路上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev extract-text-webpack-plugin@2.0.0-beta.4</span><br></pre></td></tr></table></figure>
+<h2 id="module-loaders-gt-module-rules"><a href="#module-loaders-gt-module-rules" class="headerlink" title="module.loaders =&gt; module.rules"></a>module.loaders =&gt; module.rules</h2><p>module.loaders还是可以继续使用，但是将来可能会被删掉，所以在2.0的配置里最好使用 <strong>module.rules</strong> 替代。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line">modules: &#123;</span><br><span class="line">    loaders: &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// after</span></span><br><span class="line">modules: &#123;</span><br><span class="line">    rules: &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="resolve-modulesDirectories-resolve-modules"><a href="#resolve-modulesDirectories-resolve-modules" class="headerlink" title="resolve.modulesDirectories = resolve.modules"></a>resolve.modulesDirectories = resolve.modules</h2><p>resolve的配置也有所改变。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line">resolve: &#123;</span><br><span class="line">    modulesDirectories: [...],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// after</span></span><br><span class="line">resolve: &#123;</span><br><span class="line">    modules: [...],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="No-webpack-optimize-OccurenceOrderPlugin"><a href="#No-webpack-optimize-OccurenceOrderPlugin" class="headerlink" title="No webpack.optimize.OccurenceOrderPlugin"></a>No webpack.optimize.OccurenceOrderPlugin</h2><p>webpack.optimize.OccurenceOrderPlugin这个插件，如果有研究过webpack优化的小伙伴应该就很清楚其作用，那么在2.0里，为默认功能，无需再手动添加到配置里。</p>
+<h2 id="Configuring-loaders"><a href="#Configuring-loaders" class="headerlink" title="Configuring loaders"></a>Configuring loaders</h2><p>在项目中，一般会用到 <strong>postcss</strong> 和 <strong>postcss-loader</strong> 来加载和处理我们的CSS。在1.0里，需要在webpack配置的最外层对其进行单独配置，那么在2.0里是不再允许。作为替代，在2.0里允许对每个loader进行单独的配置，但是需要在对应的rule.use里。也就是说，在1.0里需要在最外层进行配置的插件，在2.0里就必须修改成在rule里单独配置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before, in Webpack top level</span></span><br><span class="line">postcss: &#123;</span><br><span class="line">    plugins: ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// after</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [&#123;</span><br><span class="line">        test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">        use: [&#123;</span><br><span class="line">                loader: <span class="string">'postcss-loader'</span>,</span><br><span class="line">                options: &#123;</span><br><span class="line">                    plugins: ...</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="string">'sass-loader'</span></span><br><span class="line">        ]</span><br><span class="line">    &#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ExtractTextPlugin-changes"><a href="#ExtractTextPlugin-changes" class="headerlink" title="ExtractTextPlugin changes"></a>ExtractTextPlugin changes</h2><p>上面提到的loaders配置的变更，无疑让我们配置webpack时更加方便和清晰。以前，往往需要传入多个loader作为参数来配置某些插件，例如 <em>ExtractTextPlugin</em>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Webpack 1</span></span><br><span class="line">ExtractTextPlugin.extract(</span><br><span class="line">    <span class="string">'style-loader'</span>,</span><br><span class="line">    <span class="string">'css-loader!postcss-loader!sass-loader'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>如果有更多的配置时，显得更加麻烦和混乱。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Webpack 1</span></span><br><span class="line">ExtractTextPlugin.extract(</span><br><span class="line">    <span class="string">'style-loader'</span>,</span><br><span class="line">    <span class="string">'css-loader?modules-true!postcss-loader!sass-loader'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>在2.0里可以通过定义个loaders的数组来替代上面的复杂配置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Webpack 2</span></span><br><span class="line">varloaders = [&#123;</span><br><span class="line">        loader: <span class="string">'css-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">            modules: <span class="literal">true</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        loader: <span class="string">'postcss-loader'</span></span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        loader: <span class="string">'sass-loader'</span></span><br><span class="line">&#125;]</span><br><span class="line"></span><br><span class="line">ExtractTextPlugin.extract(&#123;</span><br><span class="line">    fallbackLoader: <span class="string">'style-loader'</span>,</span><br><span class="line">    loader: loaders,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="Stop-Babel-from-compiling-ES2015-modules"><a href="#Stop-Babel-from-compiling-ES2015-modules" class="headerlink" title="Stop Babel from compiling ES2015 modules"></a>Stop Babel from compiling ES2015 modules</h2><p>在1.0里，webpack不支持ES2015的modules导入方法，但是可以通过Babel将其转成CommonJS的注入规范。在2.0里，同样支持ES6的原生module导入方法，并且他能够识别到在引入的模块中，有哪些代码是没有被使用的。也就是说，假如我们使用了Babel，应该要主动告诉他不要去把ES6的注入模块方法转成CommonJS。</p>
+<p>我们可以通过改变 <strong>.babelrc</strong> 的配置来做到这点：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line"><span class="string">"presets"</span>: [<span class="string">"es2015"</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// after</span></span><br><span class="line"><span class="string">"presets"</span>: [</span><br><span class="line">    [<span class="string">"es2015"</span>, &#123;<span class="string">"modules"</span>:<span class="literal">false</span>&#125;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>Webpack2在性能上有不少的提升，在改善了资源打包的同时也优化了配置的方法，虽然现在还没正式发布，但如果可以，希望在你的项目上能用上她。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li><a href="http://javascriptplayground.com/blog/2016/10/moving-to-webpack-2/" target="_blank" rel="noopener">Migrating to Webpack 2</a></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/02/Yarn 和 Npm 命令行小抄/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Yarn 和 Npm 命令行小抄
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/17/如何打造一个高效适配的H5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">如何打造一个高效适配的H5</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share?uid=2120416" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript">
+		var jiathis_config = {data_track_clickback:'true'};
+	</script>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2120416" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="webpack2踩坑与升级指南" data-title="webpack2踩坑与升级指南" data-url="http://www.debugger.fun/2017/02/21/webpack2踩坑与升级指南/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"songyazhao"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2018 糖醋里脊叉烧包
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

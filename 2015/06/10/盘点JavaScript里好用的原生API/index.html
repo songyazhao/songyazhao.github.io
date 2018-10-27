@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>盘点JavaScript里好用的原生API | 酷酷哒小站</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这段时间翻了一番JavaScript的api，发现不少好的轮子，省去造的麻烦了。">
+<meta name="keywords" content="JS技巧,原生API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盘点JavaScript里好用的原生API">
+<meta property="og:url" content="http://www.debugger.fun/2015/06/10/盘点JavaScript里好用的原生API/index.html">
+<meta property="og:site_name" content="酷酷哒小站">
+<meta property="og:description" content="这段时间翻了一番JavaScript的api，发现不少好的轮子，省去造的麻烦了。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-27T07:28:23.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="盘点JavaScript里好用的原生API">
+<meta name="twitter:description" content="这段时间翻了一番JavaScript的api，发现不少好的轮子，省去造的麻烦了。">
+  
+    <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head_icon.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85415703-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("jujym3PQqs2CYLtDvL7IzoeG-gzGzoHsz", "VhdH9bslRJKK6mKVS48uU6Ef");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div class="switch">
+      <input type="checkbox">
+      <label></label>
+    </div>
+    <div id="particles-js">
+    </div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">糖醋里脊叉烧包</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">桌游控、健身🐶</p>
+		<p class="header-subtitle">不知名码农、吃货</p>
+		<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+		<p class="header-subtitle">～</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+					        
+								<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 20px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 20px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/songyazhao/songyazhao.github.io">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+        <div class="switch">
+          <input type="checkbox">
+          <label></label>
+        </div>
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">糖醋里脊叉烧包</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">糖醋里脊叉烧包</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">桌游控、健身🐶</p>
+			<p class="header-subtitle">不知名码农、吃货</p>
+			<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+			<p class="header-subtitle">～</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+			        
+						<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-盘点JavaScript里好用的原生API" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/06/10/盘点JavaScript里好用的原生API/" class="article-date">
+  	<time datetime="2015-06-10T07:25:22.000Z" itemprop="datePublished">2015-06-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      盘点JavaScript里好用的原生API
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS技巧/">JS技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原生API/">原生API</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JS/">JS</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2015/06/10/盘点JavaScript里好用的原生API/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="盘点JavaScript里好用的原生API">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这段时间翻了一番JavaScript的api，发现不少好的轮子，省去造的麻烦了。<br><a id="more"></a><br>直接进入正题</p>
+<h3 id="解析-字符串对象"><a href="#解析-字符串对象" class="headerlink" title="解析 字符串对象"></a>解析 <strong>字符串对象</strong></h3><p>我们都知道，JavaScript对象可以序列化为JSON，JSON也可以解析成对象，但是问题是如果出现了一个既不是JSON也不是对象的”东西”，转成哪一方都不方便，那么eval就可以派上用场<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="string">"&#123;a:1,b:2&#125;"</span>;   <span class="comment">// 看起来像对象的字符串</span></span><br><span class="line"><span class="built_in">eval</span>(<span class="string">"("</span>+ obj +<span class="string">")"</span>);     <span class="comment">// &#123;a: 1, b: 2&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>因为 eval 可以执行字符串表达式，我们希望将 obj 这个字符串对象 执行成真正的对象，那么就需要用eval。但是为了避免eval 将带 <strong>{ }</strong> 的 obj 当语句来执行，我们就在obj的外面套了对 <strong>( )</strong>，让其被解析成表达式。</p>
+<h3 id="amp-按位与"><a href="#amp-按位与" class="headerlink" title="&amp; (按位与)"></a><strong>&amp;</strong> (按位与)</h3><p>判断一个数是否为2的n次幂，可以将其与自身减一相与<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number = <span class="number">4</span>;</span><br><span class="line">(number &amp; number <span class="number">-1</span>) === <span class="number">0</span>;  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="按位异或"><a href="#按位异或" class="headerlink" title="^ (按位异或)"></a><strong>^</strong> (按位异或)</h3><p>不用第三个变量，就可以交换两个变量的值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">4</span>,b = <span class="number">3</span>;</span><br><span class="line">    a = a ^ b;  <span class="comment">//7</span></span><br><span class="line">    b = a ^ b;  <span class="comment">//4</span></span><br><span class="line">    a = a ^ b;  <span class="comment">//3</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="按位非"><a href="#按位非" class="headerlink" title="~ (按位非)"></a><strong>~</strong> (按位非)</h3><p>检索字符串，再也不用 str.indexOf(‘x’) != -1 了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'xiaoma'</span></span><br><span class="line">!!~str.indexOf(<span class="string">'xiao'</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="格式化-Date"><a href="#格式化-Date" class="headerlink" title="格式化 Date"></a>格式化 <strong>Date</strong></h3><p>想得到format后的时间？现在不用再get年月日时分秒了，两步搞定<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> temp = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">(temp.toLocaleDateString() + <span class="string">' '</span> + temp.toLocaleTimeString().slice(<span class="number">2</span>)).replace(<span class="regexp">/\//g</span>, <span class="string">'-'</span>);  <span class="comment">// "2015-5-7 9:04:10"</span></span><br></pre></td></tr></table></figure></p>
+<p>想将format后的时间转换为时间对象？直接用Date的构造函数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2015-5-7 9:04:10"</span>);</span><br><span class="line"><span class="comment">// Thu May 07 2015 09:04:10 GMT+0800 (CST)</span></span><br><span class="line"><span class="comment">//经测试发现火狐没法对format后的时间字符串使用Date.parse(),故这个方法在火狐上不好使</span></span><br></pre></td></tr></table></figure></p>
+<p>想将一个标准的时间对象转换为unix时间戳？valueOf搞定之<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">new</span> <span class="built_in">Date</span>).valueOf();  <span class="comment">// 1431004132641</span></span><br></pre></td></tr></table></figure></p>
+<p>许多朋友还提醒了这样可以快速得到时间戳<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+<span class="keyword">new</span> <span class="built_in">Date</span>;  <span class="comment">// 1431004132641</span></span><br></pre></td></tr></table></figure></p>
+<p>或者这样<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Date</span>.now();  <span class="comment">// 1431004132641</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="一元加"><a href="#一元加" class="headerlink" title="一元加"></a>一元加</h3><p>一元加可以快速将字符串的数字转换为数学数字，即<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> number = <span class="string">"23"</span>;</span><br><span class="line"><span class="keyword">typeof</span> number;  <span class="comment">// string</span></span><br><span class="line"><span class="keyword">typeof</span> +number; <span class="comment">// number</span></span><br></pre></td></tr></table></figure></p>
+<p>可以将时间对象转为时间戳<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>;  <span class="comment">//  Tue May 12 2015 22:21:33 GMT+0800 (CST)</span></span><br><span class="line">+<span class="keyword">new</span> <span class="built_in">Date</span>; <span class="comment">//  1431440459887</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="转义-URI"><a href="#转义-URI" class="headerlink" title="转义 URI"></a>转义 <strong>URI</strong></h2><p>需要将url当做参数在路由中传递，现在转义之<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="built_in">encodeURIComponent</span>(<span class="string">'http://segmentfault.com/questions/newest'</span>);</span><br><span class="line"><span class="comment">// "http%3A%2F%2Fsegmentfault.com%2Fquestions%2Fnewest"</span></span><br></pre></td></tr></table></figure></p>
+<p>再反转义<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">decodeURIComponent</span>(url); <span class="comment">// http://segmentfault.com/questions/newest</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><p>希望保留小数点后的几位小数，不用再做字符串截取了，toFixed拿走<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">number.toFixed();     <span class="comment">// "12346"</span></span><br><span class="line">number.toFixed(<span class="number">3</span>);    <span class="comment">// "12345.679"</span></span><br><span class="line">number.toFixed(<span class="number">6</span>);    <span class="comment">// "12345.678900"</span></span><br></pre></td></tr></table></figure></p>
+<p>参数范围为0~20，不写默认0</p>
+<h2 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h2><p>typeof是使用最频繁的类型检测手段<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">3</span>;        <span class="comment">// "number"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"333"</span>;    <span class="comment">// "string"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span>;    <span class="comment">// "boolean"</span></span><br></pre></td></tr></table></figure></p>
+<p>对于基本（简单）数据类型还是挺好的，但是一旦到了引用数据类型的时候，就不那么好使了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Date</span>();   <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> [];           <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125;;           <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;         <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure></p>
+<p>前三个还能忍，null居然也返回object，你是在逗我吗！！！（ps：其实这是JavaScript的bug 人艰不拆 ꒰･◡･๑꒱ ）<br>这时，我们会使用instanceof<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">toString <span class="keyword">instanceof</span> <span class="built_in">Function</span>;  <span class="comment">// true</span></span><br><span class="line">(<span class="keyword">new</span> <span class="built_in">Date</span>) <span class="keyword">instanceof</span> <span class="built_in">Date</span>;    <span class="comment">// true</span></span><br><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Object</span>;          <span class="comment">// true</span></span><br><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span>;           <span class="comment">// true</span></span><br></pre></td></tr></table></figure></p>
+<p>其实我们可以发现，[] 和 Object得到了true，虽然我们知道，[]也是对象，但是我们希望一个能更准确的判断类型的方法，现在它来了</p>
+<p>使用Object.prototype.toString()来判断，为了让每一个对象都能通过检测，我们需要使用Function.prototype.call或者Function.prototype.apply的形式来调用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">Date</span>);    <span class="comment">// "[object Date]"</span></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">Array</span>);   <span class="comment">// "[object Array]"</span></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">Object</span>);  <span class="comment">// "[object Object]"</span></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">Number</span>);  <span class="comment">// "[object Number]"</span></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">String</span>);  <span class="comment">// "[object String]"</span></span><br><span class="line">toString.call(<span class="keyword">new</span> <span class="built_in">Boolean</span>); <span class="comment">// "[object Boolean]"</span></span><br><span class="line">toString.call(<span class="literal">null</span>);        <span class="comment">// "[object Null]"</span></span><br><span class="line">toString.call(<span class="literal">undefined</span>);   <span class="comment">// "[object Undefined]"</span></span><br></pre></td></tr></table></figure></p>
+<p>要注意的是：toString方法极有可能被重写，所以需要使用的时候，<br>可以直接使用Object.prototype.toString()方法</p>
+<h2 id="实现继承"><a href="#实现继承" class="headerlink" title="实现继承"></a>实现继承</h2><p>看一个官方给的例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Shape - superclass</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Shape</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">this</span>.y = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Shape.prototype.move = <span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.x += x;</span><br><span class="line">    <span class="keyword">this</span>.y += y;</span><br><span class="line">    <span class="built_in">console</span>.info(<span class="string">"Shape moved."</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Rectangle - subclass</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Rectangle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Shape.call(<span class="keyword">this</span>); <span class="comment">//call super constructor.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Rectangle.prototype = <span class="built_in">Object</span>.create(Shape.prototype);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rect = <span class="keyword">new</span> Rectangle();</span><br><span class="line"></span><br><span class="line">rect <span class="keyword">instanceof</span> Rectangle <span class="comment">//true.</span></span><br><span class="line">rect <span class="keyword">instanceof</span> Shape <span class="comment">//true.</span></span><br><span class="line"></span><br><span class="line">rect.move(<span class="number">1</span>, <span class="number">1</span>); <span class="comment">//Outputs, "Shape moved."</span></span><br></pre></td></tr></table></figure></p>
+<p>通过call来获取初始化的属性和方法，通过Object.create来获取原型对象上的属性和方法</p>
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>ES5出了挺多的迭代函数，如map，filter，some，every，reduce等，这里有传送门，可以看到挺多的例子</p>
+<p><a href="http://segmentfault.com/a/1190000002687651" target="_blank" rel="noopener">JavaScript:侃侃Array的应用场景</a></p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>具体的api这里介绍的很详细。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">Array - JavaScript | MDN</a></p>
+<p>这里就提几句：</p>
+<ol>
+<li><strong>pop,push,reverse,shift,sort,splice,unshift</strong> 会改变原数组</li>
+<li><strong>join,concat,indexOf,lastIndexOf,slice,toString</strong> 不会改变原数组</li>
+<li><strong>map,filter,some,every,reduce,forEach这些迭代方法</strong> 不会改变原数组</li>
+</ol>
+<p>几个注意点：</p>
+<ol>
+<li><strong>shift,pop</strong> 会返回那个被删除的元素</li>
+<li><strong>splice</strong> 会返回被删除元素组成的数组，或者为空数组</li>
+<li><strong>push</strong> 会返回新数组长度</li>
+<li><strong>some</strong> 在有true的时候停止</li>
+<li><strong>every</strong> 在有false的时候停止</li>
+<li>上述的迭代方法可以在最后追加一个参数 <strong>thisArg</strong> ,它是执行 callback 时的 this 值。</li>
+</ol>
+<h2 id="原文链接"><a href="#原文链接" class="headerlink" title="原文链接"></a>原文链接</h2><p><a href="https://segmentfault.com/a/1190000002753931" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002753931</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/21/30分钟Stylus进阶/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          30分钟Stylus进阶
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share?uid=2120416" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript">
+		var jiathis_config = {data_track_clickback:'true'};
+	</script>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2120416" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="盘点JavaScript里好用的原生API" data-title="盘点JavaScript里好用的原生API" data-url="http://www.debugger.fun/2015/06/10/盘点JavaScript里好用的原生API/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"songyazhao"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2018 糖醋里脊叉烧包
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

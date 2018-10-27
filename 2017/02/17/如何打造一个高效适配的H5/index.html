@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>如何打造一个高效适配的H5 | 酷酷哒小站</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="以往拿到一份视觉稿要做页面适配，通常都是针对不同分辨率尺寸做断点写 media query，然后看效果再微调。开发过程中视觉稿要是做了修改，修改的地方就得再走一遍分辨率测试和微调，这时想屎的心都有了。而且这些适配都是建立在已 知的分辨率尺寸库上，如果市面新出来一款分辨率尺寸机型，呵呵，又要奔跑在测试微调路上。是不是能有用一套代码就适应各种分辨率窗口，那么就不会再有上面 这些烦恼，且开发效率快和维护">
+<meta name="keywords" content="移动端适配,H5适配,窗口适配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何打造一个高效适配的H5">
+<meta property="og:url" content="http://www.debugger.fun/2017/02/17/如何打造一个高效适配的H5/index.html">
+<meta property="og:site_name" content="酷酷哒小站">
+<meta property="og:description" content="以往拿到一份视觉稿要做页面适配，通常都是针对不同分辨率尺寸做断点写 media query，然后看效果再微调。开发过程中视觉稿要是做了修改，修改的地方就得再走一遍分辨率测试和微调，这时想屎的心都有了。而且这些适配都是建立在已 知的分辨率尺寸库上，如果市面新出来一款分辨率尺寸机型，呵呵，又要奔跑在测试微调路上。是不是能有用一套代码就适应各种分辨率窗口，那么就不会再有上面 这些烦恼，且开发效率快和维护">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/1.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/2.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/3.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/4.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/5.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图1.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图1-code-1.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图1-code-2.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图2.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图2-code-1.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图2-code-2.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图3.JPEG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图3-code-1.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图3-code-2.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4-code-1.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4-code-2.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4-code-3.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图5.PNG">
+<meta property="og:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图5-code-1.PNG">
+<meta property="og:updated_time" content="2018-10-27T07:28:23.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何打造一个高效适配的H5">
+<meta name="twitter:description" content="以往拿到一份视觉稿要做页面适配，通常都是针对不同分辨率尺寸做断点写 media query，然后看效果再微调。开发过程中视觉稿要是做了修改，修改的地方就得再走一遍分辨率测试和微调，这时想屎的心都有了。而且这些适配都是建立在已 知的分辨率尺寸库上，如果市面新出来一款分辨率尺寸机型，呵呵，又要奔跑在测试微调路上。是不是能有用一套代码就适应各种分辨率窗口，那么就不会再有上面 这些烦恼，且开发效率快和维护">
+<meta name="twitter:image" content="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/1.PNG">
+  
+    <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head_icon.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85415703-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("jujym3PQqs2CYLtDvL7IzoeG-gzGzoHsz", "VhdH9bslRJKK6mKVS48uU6Ef");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div class="switch">
+      <input type="checkbox">
+      <label></label>
+    </div>
+    <div id="particles-js">
+    </div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">糖醋里脊叉烧包</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">桌游控、健身🐶</p>
+		<p class="header-subtitle">不知名码农、吃货</p>
+		<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+		<p class="header-subtitle">～</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+					        
+								<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 20px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 20px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/songyazhao/songyazhao.github.io">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+        <div class="switch">
+          <input type="checkbox">
+          <label></label>
+        </div>
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">糖醋里脊叉烧包</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">糖醋里脊叉烧包</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">桌游控、健身🐶</p>
+			<p class="header-subtitle">不知名码农、吃货</p>
+			<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+			<p class="header-subtitle">～</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+			        
+						<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-如何打造一个高效适配的H5" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/17/如何打造一个高效适配的H5/" class="article-date">
+  	<time datetime="2017-02-17T05:09:28.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      如何打造一个高效适配的H5
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5适配/">H5适配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端适配/">移动端适配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/窗口适配/">窗口适配</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/CSS/">CSS</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2017/02/17/如何打造一个高效适配的H5/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="如何打造一个高效适配的H5">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以往拿到一份视觉稿要做页面适配，通常都是针对不同分辨率尺寸做断点写 media query，然后看效果再微调。开发过程中视觉稿要是做了修改，修改的地方就得再走一遍分辨率测试和微调，这时想屎的心都有了。而且这些适配都是建立在已 知的分辨率尺寸库上，如果市面新出来一款分辨率尺寸机型，呵呵，又要奔跑在测试微调路上。是不是能有用一套代码就适应各种分辨率窗口，那么就不会再有上面 这些烦恼，且开发效率快和维护成本会降低很多。<br><a id="more"></a></p>
+<p>答案是有的，而且这种形式最早出现于 flash 全屏整站，前阵子拜读了举总介绍的一篇文章关于图片适配属性 <a href="http://www.zhangxinxu.com/wordpress/2015/03/css3-object-position-object-fit" target="_blank" rel="noopener">Object-fit</a> ，发现这个属性 <a href="http://www.zhangxinxu.com/wordpress/2015/03/css3-object-position-object-fit" target="_blank" rel="noopener">Object-fit</a> 虽然只能应用在图片上，但是它的适配思路完全可以借鉴运用在 H5 页面适配上，这种思路即是「缩放」，也是本篇文章的核心内容。就是无论窗口宽高比怎样，页面能自动缩放到窗口大小，而且元素的坐标及大小还可以使用精确和便于js计算的px为单位。<br>这里借用 <a href="http://www.zhangxinxu.com/wordpress/2015/03/css3-object-position-object-fit" target="_blank" rel="noopener">Object-fit</a> 的方法命名方便记忆，下面简单介绍 H5 页面适配几种展现形式。</p>
+<p><strong>1、contain模式：</strong>以内容中心为基点按照视觉稿的宽高比缩放以适配窗口显示全页面内容，窗口与内容的宽度比或高度比之间较小者缩放填满窗口，当窗口宽高比和视觉稿不同时，另一方向的两侧出现留空部分。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/1.PNG" alt=""></p>
+<p><strong>2、cover模式：</strong>以内容中心为基点按照窗口的宽高比等比缩放以适配窗口，窗口与内容的宽度比或高度比之间较大者缩放填满窗口，当窗口宽高比和视觉稿不同时，另一方向的两侧超出窗口被裁剪，这种模式不会出现「contain 模式」的留空部分情况。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/2.PNG" alt=""></p>
+<p><strong>3、fill模式：</strong>以内容中心为基点页面拉伸填充满整个窗口以适配窗口，当窗口宽高比和视觉稿不同时，内容一定程度上被拉伸</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/3.PNG" alt=""></p>
+<p><strong>4、scale-width模式：</strong>页面横向缩放填充满窗口，纵向按视觉稿的宽高比放大。出来的效果有两种可能性，「contain 模式」或者「cover 模式」的效果。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/4.PNG" alt=""></p>
+<p><strong>5、scale-height模式：</strong>页面纵向缩放填充满窗口，横向按视觉稿的宽高比放大。出来的效果有两种可能性，「contain 模式」或者「cover 模式」的效果。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/5.PNG" alt=""></p>
+<p>下面分别来介绍我在项目中的对于适配的思考和选择以及实现方法。</p>
+<p>在做适配之前，首先要和设计师定义好页面的宽高比，即设计稿的分辨率大小，因为活动主要是通过微信进行传播推广，所以这里我使用的是 iphone5/5s 机型微信浏览器窗口分辨率&nbsp;<span lang="EN-US">640*1008</span>。选择这个分辨率主要出于以下 2 点综合考虑:</p>
+<ol>
+<li>客户端分辨率占比数。根据友盟和腾讯云运营活动近几个月的数据统计，iphone5/5s 640*1136 这个分辨率是 Ios 平台占比最多的，同时过高的分辨率对低端机型是一种浪费，需要花额外多的流量来下载这些资源；</li>
+<li>同宽高比尺寸的平台占比数。同样尺寸比的&nbsp;A<span lang="EN-US">ndroid 平台</span>分辨率 720<em>1280 和 1080</em>1920 占比数也是最多的。</li>
+</ol>
+<p>拿最近做的项目举例，该 H5 页面基本可归类为以下&nbsp;<span lang="EN-US">4&nbsp;</span>种内容类型：</p>
+<p><span lang="EN-US">1</span>、填充满窗口的层，比如背景幕布（图1）。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图1.PNG" alt="06"></p>
+<p><a href="javascript:;" target="_blank" rel="noopener">图1</a></p>
+<p>这种层实现最简单，采用「fill 模式」适配形式。实现效果核心代码如下：</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图1-code-1.PNG" alt="07"></p>
+<p>图<span lang="EN-US">1&nbsp;</span>中的图片适配处理，采用「cover 模式」适配形式。实现效果核心代码如下：</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图1-code-2.PNG" alt="08"></p>
+<p>2、同时基于水平方向和垂直方向居中的层，比如页面正文内容部分（图2）。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图2.PNG" alt="09"></p>
+<p><a href="javascript:;" target="_blank" rel="noopener">图2</a></p>
+<p>像这种层背景色是纯色或透明，「contain 模式」是最佳选择可在任何分辨率窗口显示全页面内容，出现留空部分的颜色可以通过添加一个宽高 100% 的层设置背景属性来修补。实现效果代码如下：</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图2-code-1.PNG" alt="10"><br><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图2-code-2.PNG" alt="11"></p>
+<p><span lang="EN-US">3</span>、填充满整个窗口且边缘不是纯色的层，比如（图3）。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图3.JPEG" alt="12"></p>
+<p><a href="javascript:;" target="_blank" rel="noopener">图3</a></p>
+<p>「cover&nbsp;模式」和「fill&nbsp;模式」可以作为选择。从易用性看，「fill 模式」可以精确适应窗口区域，但从视觉体验上看，宽高不等比例的拉伸会造成图片失真，同时该层的主要内容及交互操作集中在中部，不重要的边缘可以适当被裁 剪，故这里选择「cover 模式」来做适配会更好，实现效果代码同上面示例基本一样，区别在于缩放比处，代码如下：</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图3-code-1.PNG" alt="13"><br><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图3-code-2.PNG" alt="14"></p>
+<p>4、大于屏幕的层，可实现跟随手势移动场景画面，比如（图4）。</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4.PNG" alt="15"></p>
+<p><a href="javascript:;" target="_blank" rel="noopener">图4</a></p>
+<p>「scale-width 模式」和「scale-height 模式」适合运用在这类场景，（图4）是横向左右移动层，故这里选用「scale-height 模式」适配形式。实现效果代码如下：</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4-code-1.PNG" alt="16"><br><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4-code-2.PNG" alt="17"><br><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图4-code-3.PNG" alt="18"></p>
+<p>这里宽高等比缩放使用方法除了 <span lang="EN-US">transform:scale(x,y)</span>，也可以使用 <span lang="EN-US">zoom</span> 进行缩放，视实际场景需求选择合适的方法，两者主要不同是：</p>
+<ol>
+<li><span lang="EN-US">zoom</span> 的基点不能自定义，固定是左上角 <span lang="EN-US">(0,0)</span>；</li>
+<li><span lang="EN-US">transform:scale(x,y) </span>缩放转换后仍占据原始空间大小，<span lang="EN-US">zoom</span> 缩放转换后占据空间等于缩放后的大小。</li>
+</ol>
+<p>还有一些复杂的层，但无外乎都可以拆分成以上几种类型层，将内容分层出来，每个层根据内容形式选用相应的适配模式进行缩放。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1、高效适配的核心思想是「缩放」。</p>
+<p>2、每一种适配模式都不是绝对的，需要根据需求场景选用合适的形式。适配前先跟设计师沟通明确适配表现形式，遇到复杂的场景可以把内容拆分出来区分适配。当页面内容不适合方向旋转展示，此时就不要无脑适配，有两个方式可以选择：</p>
+<ol>
+<li>找设计师出一版另一方向的响应式设计稿然后制作成响应式页面；</li>
+<li>出现提示方式让用户旋转回支持的方向，比如（图5）。</li>
+</ol>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图5.PNG" alt="19"></p>
+<p><a href="javascript:;" target="_blank" rel="noopener">图5</a></p>
+<p>3、需要设定窗口等于设备物理宽度，即 <span lang="EN-US">viewport </span>为 <span lang="EN-US">width=device-width, initial-scale=1</span>。</p>
+<p>4、适配相关的 <span lang="EN-US">js </span>放在 <span lang="EN-US">head </span>里，文档结构加载完成就先执行适配 <span lang="EN-US">js</span>，给 <span lang="EN-US">body </span>加一个显隐动画规避在 <span lang="EN-US">js </span>未执行完成时页面出现缩放前后，显隐动画相关代码如下：</p>
+<p><img src="http://ohef3m3y6.bkt.clouddn.com/z-blog/image/图5-code-1.PNG" alt="20"></p>
+<p>最后，以上是我自己在这项目&nbsp;<span lang="EN-US">H5&nbsp;</span>适配的方法和应用，也许有更好的适配方案，请各位不吝赐教，多多指点。</p>
+<p>转载自：<a href="https://isux.tencent.com/how-to-make-webpage-fit-screen.html" target="_blank" rel="noopener">https://isux.tencent.com/how-to-make-webpage-fit-screen.html</a></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li>张鑫旭: 半深入理解CSS3 object-position/object-fit属性. <a href="http://www.zhangxinxu.com/wordpress/2015/03/css3-object-position-object-fit" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2015/03/css3-object-position-object-fit</a>, 2015-03-15</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/21/webpack2踩坑与升级指南/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          webpack2踩坑与升级指南
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/15/JS实现无限分页加载——原理图解/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS实现无限分页加载——原理图解</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share?uid=2120416" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript">
+		var jiathis_config = {data_track_clickback:'true'};
+	</script>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2120416" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="如何打造一个高效适配的H5" data-title="如何打造一个高效适配的H5" data-url="http://www.debugger.fun/2017/02/17/如何打造一个高效适配的H5/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"songyazhao"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2018 糖醋里脊叉烧包
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
