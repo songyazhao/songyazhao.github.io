@@ -3,24 +3,24 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>CentOS7.2下利用Certbot免费实现全站https化 | 酷酷哒小站</title>
+  <title>Mac安装php-redis操作步骤以及遇到的问题记录 | 酷酷哒小站</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="昨天折腾了俩小时，把做的一个项目全站升级了 https，遇到一些坑点，随便写写记录一下。 为啥要使用 https说白了，就是 https 更安全点，而现在的爬虫引擎甚至对 https 的站点有更高的排名和收录权，为此，必须得折腾一番啊。 咋部署呢你只需要有一张被信任的 CA （ Certificate Authority ）也就是证书授权中心颁发的 SSL 安全证书，并且将它部署到你的网站服务器上">
-<meta name="keywords" content="CentOS,HTTPS,SSL">
+  <meta name="description" content="这几天用自己的Mac折腾PHP, 需要用到php-redis, 安装时候遇到诸多问题, 特此记录">
+<meta name="keywords" content="php-redis,redis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS7.2下利用Certbot免费实现全站https化">
-<meta property="og:url" content="https://songyazhao.github.io/2018/10/27/利用Certbot免费实现全站https化/index.html">
+<meta property="og:title" content="Mac安装php-redis操作步骤以及遇到的问题记录">
+<meta property="og:url" content="https://songyazhao.github.io/2019/12/19/Mac安装php-redis操作步骤以及遇到的问题记录/index.html">
 <meta property="og:site_name" content="酷酷哒小站">
-<meta property="og:description" content="昨天折腾了俩小时，把做的一个项目全站升级了 https，遇到一些坑点，随便写写记录一下。 为啥要使用 https说白了，就是 https 更安全点，而现在的爬虫引擎甚至对 https 的站点有更高的排名和收录权，为此，必须得折腾一番啊。 咋部署呢你只需要有一张被信任的 CA （ Certificate Authority ）也就是证书授权中心颁发的 SSL 安全证书，并且将它部署到你的网站服务器上">
+<meta property="og:description" content="这几天用自己的Mac折腾PHP, 需要用到php-redis, 安装时候遇到诸多问题, 特此记录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-27T08:55:27.417Z">
+<meta property="og:updated_time" content="2020-01-17T03:47:38.411Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CentOS7.2下利用Certbot免费实现全站https化">
-<meta name="twitter:description" content="昨天折腾了俩小时，把做的一个项目全站升级了 https，遇到一些坑点，随便写写记录一下。 为啥要使用 https说白了，就是 https 更安全点，而现在的爬虫引擎甚至对 https 的站点有更高的排名和收录权，为此，必须得折腾一番啊。 咋部署呢你只需要有一张被信任的 CA （ Certificate Authority ）也就是证书授权中心颁发的 SSL 安全证书，并且将它部署到你的网站服务器上">
+<meta name="twitter:title" content="Mac安装php-redis操作步骤以及遇到的问题记录">
+<meta name="twitter:description" content="这几天用自己的Mac折腾PHP, 需要用到php-redis, 安装时候遇到诸多问题, 特此记录">
   
     <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
   
@@ -238,11 +238,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-利用Certbot免费实现全站https化" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Mac安装php-redis操作步骤以及遇到的问题记录" class="article article-type-post" itemscope="" itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/10/27/利用Certbot免费实现全站https化/" class="article-date">
-  	<time datetime="2018-10-27T07:38:20.000Z" itemprop="datePublished">2018-10-27</time>
+      <a href="/2019/12/19/Mac安装php-redis操作步骤以及遇到的问题记录/" class="article-date">
+  	<time datetime="2019-12-19T03:47:26.000Z" itemprop="datePublished">2019-12-19</time>
 </a>
     </div>
   
@@ -255,7 +255,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CentOS7.2下利用Certbot免费实现全站https化
+      Mac安装php-redis操作步骤以及遇到的问题记录
       
     </h1>
   
@@ -265,19 +265,19 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CentOS/">CentOS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTPS/">HTTPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SSL/">SSL</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-redis/">php-redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
 	</div>
 
         
 	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/CentOS/">CentOS</a>
+	<a class="article-category-link" href="/categories/PHP/">PHP</a>
 	</div>
 
 
         
           
 <div class="counter-tag counter">
-    <span id="/2018/10/27/利用Certbot免费实现全站https化/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="CentOS7.2下利用Certbot免费实现全站https化">
+    <span id="/2019/12/19/Mac安装php-redis操作步骤以及遇到的问题记录/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="Mac安装php-redis操作步骤以及遇到的问题记录">
          &nbsp;
         view
     </span>
@@ -290,25 +290,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>昨天折腾了俩小时，把做的一个项目全站升级了 <code>https</code>，遇到一些坑点，随便写写记录一下。</p>
-<h2 id="为啥要使用-https"><a href="#为啥要使用-https" class="headerlink" title="为啥要使用 https"></a>为啥要使用 https</h2><p>说白了，就是 https 更安全点，而现在的爬虫引擎甚至对 https 的站点有更高的排名和收录权，为此，必须得折腾一番啊。</p>
-<h2 id="咋部署呢"><a href="#咋部署呢" class="headerlink" title="咋部署呢"></a>咋部署呢</h2><p>你只需要有一张被信任的 CA （ Certificate Authority ）也就是证书授权中心颁发的 SSL 安全证书，并且将它部署到你的网站服务器上。一旦部署成功后，当用户访问你的网站时，浏览器会在显示的网址前加一把小绿锁，表明这个网站是安全的，当然同时你也会看到网址前的前缀变成了 <code>https</code> ，不再是 <code>http</code> 了。</p>
+        <p>这几天用自己的Mac折腾PHP, 需要用到php-redis, 安装时候遇到诸多问题, 特此记录</p>
 <a id="more"></a>
-<h2 id="Certbot-使用方法"><a href="#Certbot-使用方法" class="headerlink" title="Certbot 使用方法"></a>Certbot 使用方法</h2><p>1、获取 certbot 客户端</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.eff.org/certbot-auto</span><br><span class="line">chmod a+x certbot-auto</span><br></pre></td></tr></table></figure>
-<p>2、如果 nginx 有在运行需要将他停止，同时保证80端口处于未占用状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop nginx</span><br></pre></td></tr></table></figure>
-<p>3、生成证书</p>
-<p>直接使用官网首页的安装方法是无法使用最新的Let’s Encrypt的v2 API，这里加参数 <code>--server</code>，当有多个域名时可以在后面追加 <code>-d</code> 参数，这里我使用一个泛域名配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto certonly --preferred-challenges dns --manual  -d *.example.com --server https://acme-v02.api.letsencrypt.org/directory</span><br></pre></td></tr></table></figure>
-<p>4、根据提示在域名商那里添加解析 TXT 记录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Please deploy a DNS TXT record under the name</span><br><span class="line">_acme-challenge.example.com with the following value:</span><br><span class="line"></span><br><span class="line">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line">Before continuing, verify the record is deployed.</span><br><span class="line">-------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
-<p>5、nginx 中添加配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  <span class="comment"># TLS 基本设置</span></span><br><span class="line">  listen 443 ssl;</span><br><span class="line">  <span class="comment"># ssl on; # 这个配置开启后 http 和 https 就不能共存了</span></span><br><span class="line">  ssl_session_cache shared:SSL:1m;</span><br><span class="line">  ssl_session_timeout  5m;</span><br><span class="line">  ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">  ssl_prefer_server_ciphers on;</span><br><span class="line">  ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; <span class="comment"># 证书位置</span></span><br><span class="line">  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; <span class="comment"># 证书位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>6、至此配置完成，启动 nginx</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start nginx</span><br></pre></td></tr></table></figure>
-<h2 id="证书续签"><a href="#证书续签" class="headerlink" title="证书续签"></a>证书续签</h2><p>Let’s Encrypt 生成的免费证书为3个月时间，但是我们可以无限次续签证书</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./certbot-auto renew</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆php-redis到本机电脑</span></span><br><span class="line">➜  /Users/Zero/Downloads git <span class="built_in">clone</span>  https://github.com/phpredis/phpredis.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入到 `phpredis` 目录</span></span><br><span class="line">➜  /Users/Zero/Downloads <span class="built_in">cd</span> phpredis</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行下面的命令</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ /usr/bin/phpize</span><br><span class="line"></span><br><span class="line"><span class="comment"># 出现下面的错误提示, 是因为缺少 m4</span></span><br><span class="line">grep: /usr/include/php/main/php.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_modules.h: No such file or directory</span><br><span class="line">grep: /usr/include/php/Zend/zend_extensions.h: No such file or directory</span><br><span class="line">Configuring <span class="keyword">for</span>:</span><br><span class="line">PHP Api Version:</span><br><span class="line">Zend Module Api No:</span><br><span class="line">Zend Extension Api No:</span><br><span class="line">autom4te: need GNU m4 1.4 or later: /usr/bin/m4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行 `brew install m4` 进行安装</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ brew install m4</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装完m4后, 此时如果还不行, 在执行下面的命令安装一下 `command line`</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ xcode-select --install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行下面命令后去sdk路径</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ xcrun --show-sdk-path</span><br><span class="line"></span><br><span class="line"><span class="comment"># 得到路径</span></span><br><span class="line">/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接着执行</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include /usr/include</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可能会出现下面提示</span></span><br><span class="line">ln: /usr/include: Read-only file system</span><br><span class="line"></span><br><span class="line"><span class="comment"># 新版MacOs 分离了系统文件和用户访问, 系统文件都被mount到了只读分区</span></span><br><span class="line"><span class="comment"># 解决办法: 1、禁止ISP.  2、在终端输入 `sudo mount -uw /` 这个命令是把分区mount成可写模式, 这个命令在系统重启后失效</span></span><br><span class="line"><span class="comment"># 之后在执行 `ln -s 那一步的命令`</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ sudo mount -uw /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 然后</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ /usr/bin/phpize</span><br><span class="line">Configuring <span class="keyword">for</span>:</span><br><span class="line">PHP Api Version:         20180731</span><br><span class="line">Zend Module Api No:      20180731</span><br><span class="line">Zend Extension Api No:   320180731</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行完上一步，我们就有了 configure 配置文件了，接下来配置</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ ./configure --with-php-config=/usr/bin/php-config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 接下来是编译和安装</span></span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ make</span><br><span class="line">➜  /Users/Zero/Downloads/phpredis git:(develop) ✗ make install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置php的配置文件php.ini（具体放在那里可以用 `whereis php.ini` 或者 `php --ini` 来查看）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># php -m  #查询php的扩展</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启php-fpm, 重启nginx使redis扩展生效</span></span><br><span class="line">➜  /etc sudo killall php-fpm</span><br><span class="line">➜  /etc sudo php-fpm</span><br><span class="line">➜  /etc sudo nginx -s reload</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -318,18 +302,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/12/19/Mac安装php-redis操作步骤以及遇到的问题记录/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          Mac安装php-redis操作步骤以及遇到的问题记录
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/05/Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Nuxt.js踩坑记，利用Nuxt一键生成多页面静态站点</div>
+    <a href="/2018/10/27/利用Certbot免费实现全站https化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CentOS7.2下利用Certbot免费实现全站https化</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   
@@ -362,7 +337,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="利用Certbot免费实现全站https化" data-title="CentOS7.2下利用Certbot免费实现全站https化" data-url="https://songyazhao.github.io/2018/10/27/利用Certbot免费实现全站https化/"></div>
+	<div class="ds-thread" data-thread-key="Mac安装php-redis操作步骤以及遇到的问题记录" data-title="Mac安装php-redis操作步骤以及遇到的问题记录" data-url="https://songyazhao.github.io/2019/12/19/Mac安装php-redis操作步骤以及遇到的问题记录/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
