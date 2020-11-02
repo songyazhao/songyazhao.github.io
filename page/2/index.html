@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>酷酷哒小站</title>
@@ -162,7 +162,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 20px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 20px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 10px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/php-redis/" style="font-size: 10px;">php-redis</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
+						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 15px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 15px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 15px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/php-redis/" style="font-size: 10px;">php-redis</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
 					</div>
 				</section>
 				
@@ -238,7 +238,161 @@
 
       <div class="body-wrap">
   
-    <article id="post-JS正则难点突破--惰性匹配和贪婪匹配" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-如何打造一个高效适配的H5" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/17/如何打造一个高效适配的H5/" class="article-date">
+  	<time datetime="2017-02-17T05:09:28.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/如何打造一个高效适配的H5/">
+        如何打造一个高效适配的H5
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以往拿到一份视觉稿要做页面适配，通常都是针对不同分辨率尺寸做断点写 media query，然后看效果再微调。开发过程中视觉稿要是做了修改，修改的地方就得再走一遍分辨率测试和微调，这时想屎的心都有了。而且这些适配都是建立在已 知的分辨率尺寸库上，如果市面新出来一款分辨率尺寸机型，呵呵，又要奔跑在测试微调路上。是不是能有用一套代码就适应各种分辨率窗口，那么就不会再有上面 这些烦恼，且开发效率快和维护成本会降低很多。<br></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/H5适配/">H5适配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动端适配/">移动端适配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/窗口适配/">窗口适配</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/CSS/">CSS</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2017/02/17/如何打造一个高效适配的H5/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="如何打造一个高效适配的H5">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2017/02/17/如何打造一个高效适配的H5/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-JS实现无限分页加载——原理图解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/15/JS实现无限分页加载——原理图解/" class="article-date">
+  	<time datetime="2016-07-15T08:16:22.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/15/JS实现无限分页加载——原理图解/">
+        JS实现无限分页加载——原理图解
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于网页的执行都是单线程的，在JS执行的过程中，页面会呈现阻塞状态。因此，如果JS处理的数据量过大，过程复杂，可能会造成页面的卡顿。传统的数据展现都以分页的形式，但是分页的效果并不好，需要用户手动点击下一页，才能看到更多的内容。</p>
+<p>有很多网站使用 无限分页 的模式，即网页视窗到达内容底部就自动加载下一部分的内容。。。</p>
+<p>本篇就无限分页的实现模型，讲述其中奥妙。<br></p>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrollTop/">scrollTop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/无限分页/">无限分页</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/JS/">JS</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2016/07/15/JS实现无限分页加载——原理图解/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="JS实现无限分页加载——原理图解">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/15/JS实现无限分页加载——原理图解/#more">more >></a>
+        </p>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-JS正则难点突破--惰性匹配和贪婪匹配" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/01/17/JS正则难点突破--惰性匹配和贪婪匹配/" class="article-date">
@@ -248,7 +402,7 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -290,7 +444,8 @@
       
         
 <div class="counter-tag counter">
-    <span id="/2016/01/17/JS正则难点突破--惰性匹配和贪婪匹配/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="JS正则难点突破--惰性匹配和贪婪匹配">
+    <span id="/2016/01/17/JS正则难点突破--惰性匹配和贪婪匹配/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="JS正则难点突破--惰性匹配和贪婪匹配">
          &nbsp;
         view
     </span>
@@ -301,7 +456,7 @@
     </div>
       
         <p class="article-more-link">
-          <a href="/2016/01/17/JS正则难点突破--惰性匹配和贪婪匹配/#more">more >></a>
+          <a  href="/2016/01/17/JS正则难点突破--惰性匹配和贪婪匹配/#more">more >></a>
         </p>
       
     
@@ -316,7 +471,7 @@
 
 
   
-    <article id="post-30分钟Stylus进阶" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-30分钟Stylus进阶" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/12/21/30分钟Stylus进阶/" class="article-date">
@@ -326,7 +481,7 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -345,9 +500,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>写CSS，最繁琐的就是每个属性都要写冒号<code>:</code>，分号<code>;</code>，每个选择器都要带花括号<code>{}</code>。一次触键时间可能非常短，但是每行都要重复地输入一些符号，肯定会增加编码时间。后来出现了Less和Sass这些预编译语言，却依然没有减少这些冗余符号的输入，从这点上来说，我真的很不明白它们怎么会起Less这样的名字，也奇怪为什么它们这么火。（好吧，需要承认的是，能nesting，能写mixin和function等等的确是减少了时间，而且这些都发生在Stylus出生以前）<br>
+        <p>写CSS，最繁琐的就是每个属性都要写冒号<code>:</code>，分号<code>;</code>，每个选择器都要带花括号<code>{}</code>。一次触键时间可能非常短，但是每行都要重复地输入一些符号，肯定会增加编码时间。后来出现了Less和Sass这些预编译语言，却依然没有减少这些冗余符号的输入，从这点上来说，我真的很不明白它们怎么会起Less这样的名字，也奇怪为什么它们这么火。（好吧，需要承认的是，能nesting，能写mixin和function等等的确是减少了时间，而且这些都发生在Stylus出生以前）<br></p>
       
-    </p></div>
+    </div>
     
     <div class="article-info article-info-index">
       
@@ -365,7 +520,8 @@
       
         
 <div class="counter-tag counter">
-    <span id="/2015/12/21/30分钟Stylus进阶/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="30分钟Stylus进阶">
+    <span id="/2015/12/21/30分钟Stylus进阶/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="30分钟Stylus进阶">
          &nbsp;
         view
     </span>
@@ -376,7 +532,7 @@
     </div>
       
         <p class="article-more-link">
-          <a href="/2015/12/21/30分钟Stylus进阶/#more">more >></a>
+          <a  href="/2015/12/21/30分钟Stylus进阶/#more">more >></a>
         </p>
       
     
@@ -391,7 +547,7 @@
 
 
   
-    <article id="post-盘点JavaScript里好用的原生API" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-盘点JavaScript里好用的原生API" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/06/10/盘点JavaScript里好用的原生API/" class="article-date">
@@ -401,7 +557,7 @@
   
   <div class="article-inner">
     
-      <input type="hidden" class="isFancy">
+      <input type="hidden" class="isFancy" />
     
     
       <header class="article-header">
@@ -420,9 +576,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这段时间翻了一番JavaScript的api，发现不少好的轮子，省去造的麻烦了。<br>
+        <p>这段时间翻了一番JavaScript的api，发现不少好的轮子，省去造的麻烦了。<br></p>
       
-    </p></div>
+    </div>
     
     <div class="article-info article-info-index">
       
@@ -440,7 +596,8 @@
       
         
 <div class="counter-tag counter">
-    <span id="/2015/06/10/盘点JavaScript里好用的原生API/" class="leancloud_visitors post-title-link" style="font-size: 12px" data-flag-title="盘点JavaScript里好用的原生API">
+    <span id="/2015/06/10/盘点JavaScript里好用的原生API/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="盘点JavaScript里好用的原生API">
          &nbsp;
         view
     </span>
@@ -451,7 +608,7 @@
     </div>
       
         <p class="article-more-link">
-          <a href="/2015/06/10/盘点JavaScript里好用的原生API/#more">more >></a>
+          <a  href="/2015/06/10/盘点JavaScript里好用的原生API/#more">more >></a>
         </p>
       
     

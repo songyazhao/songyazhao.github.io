@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>面试问题和解答简单整理 | 酷酷哒小站</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="页面从加载到完成经历了什么dom tree -&amp;gt; render tree">
+<meta name="keywords" content="Stylus,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试问题和解答简单整理">
+<meta property="og:url" content="https://songyazhao.github.io/2020/02/21/面试问题和回答简单整理/index.html">
+<meta property="og:site_name" content="酷酷哒小站">
+<meta property="og:description" content="页面从加载到完成经历了什么dom tree -&amp;gt; render tree">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-25T02:58:42.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试问题和解答简单整理">
+<meta name="twitter:description" content="页面从加载到完成经历了什么dom tree -&amp;gt; render tree">
+  
+    <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/head_icon.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+  
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-85415703-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("jujym3PQqs2CYLtDvL7IzoeG-gzGzoHsz", "VhdH9bslRJKK6mKVS48uU6Ef");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div class="switch">
+      <input type="checkbox">
+      <label></label>
+    </div>
+    <div id="particles-js">
+    </div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">糖醋里脊叉烧包</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">桌游控、健身🐶</p>
+		<p class="header-subtitle">不知名码农、吃货</p>
+		<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+		<p class="header-subtitle">～</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+					        
+								<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+					        
+						</div>
+					</nav>
+				</section>
+
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/CSS/" style="font-size: 20px;">CSS</a> <a href="/tags/CentOS/" style="font-size: 10px;">CentOS</a> <a href="/tags/H5适配/" style="font-size: 10px;">H5适配</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/JS技巧/" style="font-size: 15px;">JS技巧</a> <a href="/tags/MariaDB/" style="font-size: 10px;">MariaDB</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/Npm/" style="font-size: 15px;">Npm</a> <a href="/tags/Nuxt/" style="font-size: 10px;">Nuxt</a> <a href="/tags/Performance/" style="font-size: 10px;">Performance</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Stylus/" style="font-size: 15px;">Stylus</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Webpack2/" style="font-size: 10px;">Webpack2</a> <a href="/tags/Yarn/" style="font-size: 10px;">Yarn</a> <a href="/tags/node-canvas/" style="font-size: 10px;">node-canvas</a> <a href="/tags/node-gyp/" style="font-size: 10px;">node-gyp</a> <a href="/tags/php-redis/" style="font-size: 10px;">php-redis</a> <a href="/tags/redis/" style="font-size: 10px;">redis</a> <a href="/tags/scrollTop/" style="font-size: 10px;">scrollTop</a> <a href="/tags/升级指南/" style="font-size: 10px;">升级指南</a> <a href="/tags/原生API/" style="font-size: 10px;">原生API</a> <a href="/tags/惰性匹配/" style="font-size: 10px;">惰性匹配</a> <a href="/tags/无限分页/" style="font-size: 10px;">无限分页</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/移动端适配/" style="font-size: 10px;">移动端适配</a> <a href="/tags/窗口适配/" style="font-size: 10px;">窗口适配</a> <a href="/tags/贪婪匹配/" style="font-size: 10px;">贪婪匹配</a>
+					</div>
+				</section>
+				
+
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/songyazhao/songyazhao.github.io">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+        <div class="switch">
+          <input type="checkbox">
+          <label></label>
+        </div>
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">糖醋里脊叉烧包</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/head_icon.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">糖醋里脊叉烧包</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">桌游控、健身🐶</p>
+			<p class="header-subtitle">不知名码农、吃货</p>
+			<p class="header-subtitle">咳咳，你看起来很美味🍩</p>
+			<p class="header-subtitle">～</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="qq" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=59256790&site=qq&menu=yes" title="qq">qq</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/278220017" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/song-mou-mou-92-99/answers" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:59256790@qq.com" title="mail">mail</a>
+			        
+						<a class="github" target="_blank" href="https://github.com/songyazhao" title="github">github</a>
+			        
+				</div>
+			</nav>
+		</header>
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-面试问题和回答简单整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/21/面试问题和回答简单整理/" class="article-date">
+  	<time datetime="2020-02-21T06:25:04.000Z" itemprop="datePublished">2020-02-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      面试问题和解答简单整理
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stylus/">Stylus</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/CSS/">CSS</a>
+	</div>
+
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2020/02/21/面试问题和回答简单整理/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="面试问题和解答简单整理">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="页面从加载到完成经历了什么"><a href="#页面从加载到完成经历了什么" class="headerlink" title="页面从加载到完成经历了什么"></a>页面从加载到完成经历了什么</h2><p>dom tree -&gt; render tree</p>
+<a id="more"></a>
+<h2 id="回流和重绘"><a href="#回流和重绘" class="headerlink" title="回流和重绘"></a>回流和重绘</h2><p>回流：当render tree中的一部分(或全部)因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流(reflow)。每个页面至少需要一次回流<br>重绘：当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格，而不会影响布局的，比如background-color。则就叫称为重绘。</p>
+<p>回流必将引起重绘，而重绘不一定会引起回流。比如：只有颜色改变的时候就只会发生重绘而不会引起回流<br>当页面布局和几何属性改变时就需要回流<br>比如：添加或者删除可见的DOM元素，元素位置改变，元素尺寸改变——边距、填充、边框、宽度和高度，内容改变</p>
+<h2 id="对闭包的理解"><a href="#对闭包的理解" class="headerlink" title="对闭包的理解"></a>对闭包的理解</h2><p>外部函数调用之后其变量对象本应该被销毁，但闭包的存在使我们仍然可以访问外部函数的变量对象(实质是未被垃圾回收)</p>
+<h2 id="堆和栈"><a href="#堆和栈" class="headerlink" title="堆和栈"></a>堆和栈</h2><p>栈内存：直接定义的基本类型，如：字符串、数字、布尔值、null、undefined、指针<br>堆内存：Object、通过new实例化的类（new Boolean、new String等）</p>
+<p>栈内存中的变量一般都是已知大小或者有范围上限的，算作一种简单存储。而堆内存存储的对象类型数据对于大小这方面，一般都是未知的。个人认为，这也是为什么null作为一个object类型的变量却存储在栈内存中的原因。<br>因此当我们定义一个const对象的时候，我们说的常量其实是指针，就是const对象对应的堆内存指向是不变的，但是堆内存中的数据本身的大小或者属性是可变的。而对于const定义的基础变量而言，这个值就相当于const对象的指针，是不可变。</p>
+<h2 id="内存分配和垃圾回收"><a href="#内存分配和垃圾回收" class="headerlink" title="内存分配和垃圾回收"></a>内存分配和垃圾回收</h2><p>一般来说栈内存线性有序存储，容量小，系统分配效率高。而堆内存首先要在堆内存新分配存储区域，之后又要把指针存储到栈内存中，效率相对就要低一些了。<br>垃圾回收方面，栈内存变量基本上用完就回收了，而堆内存中的变量因为存在很多不确定的引用，只有当所有调用的变量全部销毁之后才能回收。<br>es6中新增的 WeekMap 对象可以对大对象类型的垃圾回收有一些用处</p>
+<h2 id="JS数据结构的栈和队列操作"><a href="#JS数据结构的栈和队列操作" class="headerlink" title="JS数据结构的栈和队列操作"></a>JS数据结构的栈和队列操作</h2><p>栈（堆栈）：栈是一种后进先出的数据结构，也就是说最新添加的项最早被移出；它是一种运算受限的线性表，只能在表头/栈顶进行插入和删除操作；<br>打个比方：一队人马走入了一条死胡同，只有一个入口，无出口，想要出去就只能把尾变成首开始出去；<br>JS也为数组提供了方法可以实现类似入栈出栈功能，入栈push()、出栈pop()。</p>
+<p>队列：是一种先进先出的数据结构；队列在列表的末端增加项，在首端移除项；<br>例如在银行窗口排队办理业务，最前面的第一个人开始办理，后面来的人只能在队伍末尾排队，直到排到他们为止；<br>JS为数组提供了方法可以实现队列功能， 入队unshift()、 出队pop()；</p>
+<h2 id="sessionStorage-和-localStotage-区别"><a href="#sessionStorage-和-localStotage-区别" class="headerlink" title="sessionStorage 和 localStotage 区别"></a>sessionStorage 和 localStotage 区别</h2><p>sessionStorage：sessionStorage的生命周期是在仅在当前会话下有效。sessionStorage是在同源的窗口中始终存在的数据。只要这个浏览器窗口没有关闭，即使刷新页面或者进入同源另一个页面，数据依然存在。但是sessionStorage在关闭了浏览器窗口后就会被销毁。同时独立的打开同一个窗口同一个页面，sessionStorage也是不一样的。</p>
+<p>localStotage：localStorage的生命周期是永久的，关闭页面或浏览器之后localStorage中的数据也不会消失。localStorage除非主动删除数据，否则数据永远不会消失。</p>
+<h2 id="304的缓存原理"><a href="#304的缓存原理" class="headerlink" title="304的缓存原理"></a>304的缓存原理</h2><p>客户端请求一个页面（A）。 服务器返回页面A，并在给A加上一个ETag。 客户端展现该页面，并将页面连同ETag一起缓存。 客户再次请求页面A，并将上次请求时服务器返回的ETag一起传递给服务器。 服务器检查该ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304（未修改——Not Modified）和一个空的响应体。</p>
+<h2 id="301重定向和302重定向的区别"><a href="#301重定向和302重定向的区别" class="headerlink" title="301重定向和302重定向的区别"></a>301重定向和302重定向的区别</h2><p>302重定向只是暂时的重定向，搜索引擎会抓取新的内容而保留旧的地址，因为服务器返回302，所以，搜索搜索引擎认为新的网址是暂时的。比如未登陆的用户访问用户中心重定向到登录页面。</p>
+<p>而301重定向是永久的重定向，搜索引擎在抓取新的内容的同时也将旧的网址替换为了重定向之后的网址。301比较常用的场景是使用域名跳转。</p>
+<h2 id="静态资源缓存的几种方式"><a href="#静态资源缓存的几种方式" class="headerlink" title="静态资源缓存的几种方式"></a>静态资源缓存的几种方式</h2><p>Service Worker：<br>Service Worker 是运行在浏览器背后的独立线程，一般可以用来实现缓存功能。使用 Service Worker的话，传输协议必须为 HTTPS。因为 Service Worker 中涉及到请求拦截，所以必须使用 HTTPS 协议来保障安全。Service Worker 的缓存与浏览器其他内建的缓存机制不同，它可以让我们自由控制缓存哪些文件、如何匹配缓存、如何读取缓存，并且缓存是持续性的</p>
+<p>Memory Cache：<br>也就是内存中的缓存，主要包含的是当前中页面中已经抓取到的资源,例如页面上已经下载的样式、脚本、图片等。读取内存中的数据肯定比磁盘快,内存缓存虽然读取高效，可是缓存持续性很短，会随着进程的释放而释放。 一旦我们关闭 Tab 页面，内存中的缓存也就被释放了。 那么既然内存缓存这么高效，我们是不是能让数据都存放在内存中呢？ 这是不可能的。计算机中的内存一定比硬盘容量小得多，操作系统需要精打细算内存的使用，所以能让我们使用的内存必然不多。 当我们访问过页面以后，再次刷新页面，可以发现很多数据都来自于内存缓存。<br>内存缓存中有一块重要的缓存资源是preloader相关指令（例如 \<link rel="prefetch">）下载的资源。总所周知preloader的相关指令已经是页面优化的常见手段之一，它可以一边解析js/css文件，一边网络请求下一个资源。 需要注意的事情是，内存缓存在缓存资源时并不关心返回资源的HTTP缓存头Cache-Control是什么值，同时资源的匹配也并非仅仅是对URL做匹配，还可能会对Content-Type，CORS等其他特征做校验。</p>
+<p>Disk Cache：<br>Disk Cache 也就是存储在硬盘中的缓存，读取速度慢点，但是什么都能存储到磁盘中，比之 Memory Cache 胜在容量和存储时效性上。 在所有浏览器缓存中，Disk Cache 覆盖面基本是最大的。它会根据 HTTP Herder 中的字段判断哪些资源需要缓存，哪些资源可以不请求直接使用，哪些资源已经过期需要重新请求。并且即使在跨站点的情况下，相同地址的资源一旦被硬盘缓存下来，就不会再次去请求数据。绝大部分的缓存都来自 Disk Cache，关于 HTTP 的协议头中的缓存字段，我们会在下文进行详细介绍。 浏览器会把哪些文件丢进内存中？哪些丢进硬盘中？ 关于这点，网上说法不一，不过以下观点比较靠得住：</p>
+<p>对于大文件来说，大概率是不存储在内存中的，反之优先 当前系统内存使用率高的话，文件优先存储进硬盘</p>
+<p>Push Cache：<br>Push Cache（推送缓存）是 HTTP/2 中的内容，当以上三种缓存都没有命中时，它才会被使用。它只在会话（Session）中存在，一旦会话结束就被释放，并且缓存时间也很短暂，在Chrome浏览器中只有5分钟左右，同时它也并非严格执行HTTP头中的缓存指令</p>
+<h2 id="对原型链的理解"><a href="#对原型链的理解" class="headerlink" title="对原型链的理解"></a>对原型链的理解</h2><p>中所有的对象都是Object的实例，并继承Object.prototype的属性和方法，也就是说，Object.prototype是所有对象的爸爸；<br>在对象创建时，就会有一些预定义的属性，其中定义函数的时候，这个预定义属性就是prototype,这个prototype是一个普通的对象；<br>而定义普通的对象的时候，就会生成一个<strong>proto</strong>，这个<strong>proto</strong>指向的是这个对象的构造函数的prototype</p>
+<h2 id="前端中常见的设计模式"><a href="#前端中常见的设计模式" class="headerlink" title="前端中常见的设计模式"></a>前端中常见的设计模式</h2><p>观察订阅模式</p>
+<p>代理模式</p>
+<h2 id="HTTP2相对于HTTP1的优缺点"><a href="#HTTP2相对于HTTP1的优缺点" class="headerlink" title="HTTP2相对于HTTP1的优缺点"></a>HTTP2相对于HTTP1的优缺点</h2><p>HTTP/2主要是为了解决现HTTP 1.1性能不好的问题才出现的。当初Google为了提高HTTP性能，做出了SPDY，它就是HTTP/2的前身，后来也发展成为HTTP/2的标准。</p>
+<p>HTTP Header的压缩，采用的是HPack算法。<br>HTTP/2的Server Push，非常重要的一个特性。<br>请求的pipeline(管道流，数据交错传输)。<br>修复在HTTP 1.x的队头阻塞问题。<br>在单个TCP连接里多工复用请求。<br>HTTP/2兼容HTTP 1.1，例如HTTP Method，Status code，URI以及大部分Header Fields。</p>
+<h2 id="HTTPS的优缺点"><a href="#HTTPS的优缺点" class="headerlink" title="HTTPS的优缺点"></a>HTTPS的优缺点</h2><h2 id="JS的线程机制以及-Event-Loop"><a href="#JS的线程机制以及-Event-Loop" class="headerlink" title="JS的线程机制以及 Event Loop"></a>JS的线程机制以及 Event Loop</h2><p>GUI渲染线程：<br>浏览器输入url，浏览器主进程接管，开一个下载线程，然后进行 http请求（略去DNS查询，IP寻址等等操作），然后等待响应，获取内容，随后将内容通过RendererHost接口转交给Renderer进程，浏览器渲染流程开始；<br>为了防止渲染出现不可预期的结果，浏览器设置GUI渲染线程与JS引擎为互斥的关系，当JS引擎执行时GUI线程会被挂起，GUI更新则会被保存在一个队列中等到JS引擎线程空闲时立即被执行。</p>
+<p>JS引擎线程：<br>也称为JS内核，负责解析处理运行JS脚本程序（例如V8引擎）；<br>JS引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序；<br>同样注意，GUI渲染线程与JS引擎线程是互斥的，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</p>
+<p>事件触发线程(Event Loop)：<br>事件触发线程管理着一个任务队列，只要异步任务有了运行结果，就在任务队列之中放置一个事件。或者当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理</p>
+<p>定时触发器线程：<br>传说中的setInterval与setTimeout所在线程，当使用setTimeout或setInterval时，它需要定时器线程计时，计时完成后就会将特定的事件推入事件队列中。</p>
+<p>异步http请求线程：<br>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由JavaScript引擎执行。</p>
+<h2 id="移动端常见的布局方式（rem、vw）"><a href="#移动端常见的布局方式（rem、vw）" class="headerlink" title="移动端常见的布局方式（rem、vw）"></a>移动端常见的布局方式（rem、vw）</h2><p>REM布局原理：根据CSS的媒体查询功能，更改html根字体大小，实现字体大小随屏幕尺寸变化。<br>REM布局中用到了JS来动态设置html的font-size，可能造成页面的抖动。<br>可以考虑比较新的VW布局，无需使用JS，虽说在移动端 iOS 8 以上以及 Android 4.4 以上才获得支持<br>视窗 viewport：简单的理解，viewport是严格等于浏览器的窗口。在桌面浏览器中，viewport就是浏览器窗口的宽度高度。但在移动端设备上就有点复杂。移动端的viewport太窄，为了能更好为CSS布局服务，所以提供了两个viewport:虚拟的visualviewport和布局的layoutviewport。</p>
+<h2 id="Promise是为了解决什么而产生的"><a href="#Promise是为了解决什么而产生的" class="headerlink" title="Promise是为了解决什么而产生的"></a>Promise是为了解决什么而产生的</h2><p>Promise就是为了解决callback的问题而产生的。Promise 实现了链式调用，也就是说每次 then 后返回的都是一个全新 Promise，如果我们在 then 中 return ，return 的结果会被Promise.resolve() 包装</p>
+<p>缺点：无法取消 Promise ，错误需要通过回调函数来捕获</p>
+<h2 id="callback的优缺点"><a href="#callback的优缺点" class="headerlink" title="callback的优缺点"></a>callback的优缺点</h2><p>缺点：回调地狱，不能用 try catch 捕获错误，不能 return`；回调地狱导致的调试困难，和大脑的思维方式不符，嵌套函数存在耦合性，一旦有所改动，就会牵一发而动全身，即（控制反转,嵌套函数过多的多话，很难处理错误</p>
+<p>优点：解决了同步的问题（只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。）</p>
+<h2 id="webpack中hash、chunkhash、contenthash区别"><a href="#webpack中hash、chunkhash、contenthash区别" class="headerlink" title="webpack中hash、chunkhash、contenthash区别"></a>webpack中hash、chunkhash、contenthash区别</h2><p>hash：每次修改任何一个文件，所有文件名的hash至都将改变。所以一旦修改了任何一个文件，整个项目的文件缓存都将失效。</p>
+<p>chunkhash：chunkhash根据不同的入口文件(Entry)进行依赖文件解析、构建对应的chunk，生成对应的哈希值。在生产环境里把一些公共库和程序入口文件区分开，单独打包构建，接着我们采用chunkhash的方式生成哈希值，那么只要我们不改动公共库的代码，就可以保证其哈希值不会受影响。并且webpack4中支持了异步import功能，固，chunkhash也作用于此。</p>
+<p>contenthash：contenthash是针对文件内容级别的，只有你自己模块的内容变了，那么hash值才改变</p>
+<h2 id="什么是前端模块规范AMD，CMD，CommonJS和UMD"><a href="#什么是前端模块规范AMD，CMD，CommonJS和UMD" class="headerlink" title="什么是前端模块规范AMD，CMD，CommonJS和UMD"></a>什么是前端模块规范AMD，CMD，CommonJS和UMD</h2><p>AMD 规范的实现代表是require.js，AMD是异步加载规范</p>
+<p>CMD规范的实现代表是sea.js，对于依赖的模块AMD是提前执行，CMD是延迟执行。不过RequireJS从2.0开始，也改成可以延迟执行</p>
+<p>CommonJS 是服务器端模块的规范，Node.js采用了这个规范，加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象</p>
+<p>UMD是AMD和CommonJS的糅合，UMD先判断是否支持Node.js的模块（exports）是否存在，存在则使用Node.js模块模式。再判断是否支持AMD（define是否存在），存在则使用AMD方式加载模块。</p>
+<p>CMD推崇依赖就近，AMD推崇依赖前置；简单来说,就是sea.js属于懒加载,require.js属于预加载<br>预加载和懒加载的优缺点：<br>预加载:当第一次访问时将所有的文件加载出来。优点:第一次访问完成以后, 再次访问的速度会很快；缺点:第一次加载页面要等待很久<br>懒加载:使用的时候才会加载对应的文件。优点:第一次访问速度相对快点；缺点:再访问其他新的模块时速度会变慢</p>
+<p>commomJS模块：<br>1、获得的是缓存值，是对模块的拷贝<br>2、可以对commomJS模块重新赋值<br>3、可以对对象内部的值进行改变</p>
+<p>es6模块：<br>1、获得的是时时的值，是对模块的引用<br>2、对es6模块重新赋值会报错<br>3、可以对对象内部的值进行改变</p>
+<h2 id="webpack-中-loader-和-plugin-的主要区别"><a href="#webpack-中-loader-和-plugin-的主要区别" class="headerlink" title="webpack 中 loader 和 plugin 的主要区别"></a>webpack 中 loader 和 plugin 的主要区别</h2><p>loader 用于加载某些资源文件。<br>因为 webpack 只能理解 JavaScript 和 JSON 文件，对于其他资源例如 css，图片，或者其他的语法集，比如 jsx， coffee，是没有办法加载的。 这就需要对应的loader将资源转化，加载进来。从字面意思也能看出，loader是用于加载的，它作用于一个个文件上。</p>
+<p>plugin 用于扩展webpack的功能。<br>它直接作用于 webpack，扩展了它的功能。当然loader也是变相的扩展了 webpack ，但是它只专注于转化文件（transform）这一个领域。而plugin的功能更加的丰富，而不仅局限于资源的加载。</p>
+<h2 id="Vue生命周期：A-gt-B，B是A的子组件，他们两个的生命周期的顺序"><a href="#Vue生命周期：A-gt-B，B是A的子组件，他们两个的生命周期的顺序" class="headerlink" title="Vue生命周期：A &gt; B，B是A的子组件，他们两个的生命周期的顺序"></a>Vue生命周期：A &gt; B，B是A的子组件，他们两个的生命周期的顺序</h2><p>关于Vue父子组件间的生命周期类似洋葱圈：<br>beforeCreated(A) -&gt; created(A) -&gt; beforeCreated(B) -&gt; created(B) -&gt; beforeMounted(B) -&gt; mounted(B) -&gt; beforeMounted(A) -&gt; mounted(C)</p>
+<h2 id="Vue的数据响应式原理"><a href="#Vue的数据响应式原理" class="headerlink" title="Vue的数据响应式原理"></a>Vue的数据响应式原理</h2><p>Vue.js的响应式原理依赖于 <code>Object.defineProperty</code>，尤大大在Vue.js文档中就已经提到过，这也是Vue.js不支持IE8 以及更低版本浏览器的原因。Vue通过设定对象属性的 <code>setter/getter</code> 方法来监听数据的变化，通过 <code>getter</code> 进行依赖收集（Vue里面真正做数据响应式处理的是defineReactive()。 defineReactive方法就是把对象的数据属性转为访问器属性），而每个 <code>setter</code> 方法就是一个观察者，在数据变更的时候通知订阅者更新视图。<br>但是这是针对Object实现的，如果是数组呢? 通过 <code>set/get</code> 方式是不行的。关于数组，Vue作者使用了一个方式来实现Array类型的监测: 拦截器，其核心思想是通过创建一个拦截器来覆盖数组本身的原型对象Array.prototype。</p>
+<h2 id="vue组件间通信六种方式（6种）"><a href="#vue组件间通信六种方式（6种）" class="headerlink" title="vue组件间通信六种方式（6种）"></a>vue组件间通信六种方式（6种）</h2><p>1、props/$emit：父组件A通过props的方式向子组件B传递，B to A 通过在 B 组件中 $emit, A 组件中 v-on 的方式实现。</p>
+<p>2、$emit/$on：这种方法通过一个空的Vue实例作为中央事件总线（事件中心），用它来触发事件和监听事件,巧妙而轻量地实现了任何组件间的通信，包括父子、兄弟、跨级。当我们的项目比较大时，可以选择更好的状态管理解决方案vuex。</p>
+<p>3、vuex</p>
+<p>4、$attrs/$listeners：$attrs包含了父作用域中不被 prop 所识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定 (class 和 style 除外)，并且可以通过 v-bind=”$attrs” 传入内部组件。通常配合 interitAttrs 选项一起使用；$listeners包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on=”$listeners” 传入内部组件</p>
+<p>5、provide/inject：允许一个祖先组件向其所有子孙后代注入一个依赖，不论组件层次有多深，并在起上下游关系成立的时间里始终生效。一言而蔽之：祖先组件中通过provider来提供变量，然后在子孙组件中通过inject来注入变量。<br>provide / inject API 主要解决了跨级组件间的通信问题，不过它的使用场景，主要是子组件获取上级组件的状态，跨级组件间建立了一种主动提供与依赖注入的关系。</p>
+<p>6、$parent / $children 与 $ref：ref如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例；$parent / $children 是 访问父 / 子实例<br>需要注意的是：这两种都是直接得到组件实例，使用后可以直接调用组件的方法或访问数据。</p>
+<p><a href="https://segmentfault.com/a/1190000019208626" target="_blank" rel="noopener">详细解答</a></p>
+<h2 id="简要介绍Vuex原理"><a href="#简要介绍Vuex原理" class="headerlink" title="简要介绍Vuex原理"></a>简要介绍Vuex原理</h2><p>Vuex实现了一个单向数据流，在全局拥有一个State存放数据，当组件要更改State中的数据时，必须通过Mutation进行，Mutation同时提供了订阅者模式供外部插件调用获取State数据的更新。而当所有异步操作(常见于调用后端接口异步获取更新数据)或批量的同步操作需要走Action，但Action也是无法直接修改State的，还是需要通过Mutation来修改State的数据。最后，根据State的变化，渲染到视图上。</p>
+<h2 id="Vuex与localStorage"><a href="#Vuex与localStorage" class="headerlink" title="Vuex与localStorage"></a>Vuex与localStorage</h2><p>vuex 是 vue 的状态管理器，存储的数据是响应式的。但是并不会保存起来，刷新之后就回到了初始状态，具体做法应该在vuex里数据改变的时候把数据拷贝一份保存到localStorage里面，刷新之后，如果localStorage里有保存的数据，取出来再替换store里的state。</p>
+<h2 id="Mpx的特性"><a href="#Mpx的特性" class="headerlink" title="Mpx的特性"></a>Mpx的特性</h2><ul>
+<li>数据响应特性(watch / computed)</li>
+<li>增强的模板语法(动态组件 / 样式绑定 / 类名绑定 / 内联事件函数 / 双向绑定 等)</li>
+<li>深度性能优化(原生自定义组件/基于依赖收集和数据变化的setData)</li>
+<li>Webpack编译(npm/循环依赖/Babel/ESLint/css预编译/代码优化等)</li>
+<li>单文件组件开发</li>
+<li>渐进接入 / 原生组件支持</li>
+<li>状态管理(Vuex规范/多实例/可合并)</li>
+<li>跨团队合作(packages)</li>
+<li>逻辑复用能力(mixins)</li>
+<li>脚手架支持</li>
+<li>小程序自身规范的完全支持</li>
+<li>多平台支持(微信、支付宝、百度、qq、头条)</li>
+<li>跨平台编译(支持将微信小程序转换为支付宝、百度、qq、头条小程序)</li>
+<li>TypeScript支持(完善的类型推导)</li>
+</ul>
+<h2 id="微信小程序的架构原理"><a href="#微信小程序的架构原理" class="headerlink" title="微信小程序的架构原理"></a>微信小程序的架构原理</h2><p>微信提供的环境为宿主环境，小程序可以直接调用宿主环境提供的相关能力，完成许多普通web应用无法完成的事情，小程序分渲染层和逻辑层分别右两个线程管理：渲染层使用WebView进行渲染；逻辑层采用JsCore线程解析允许JS脚本。一个小程序存在多个界面，所以渲染层存在多个WebView线程，这两个线程的通信会经由Native（微信客户端）做中转，逻辑层发送网络请求也经由Native转发。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/02/Web Performance常见性能指标/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Web Performance常见性能指标(FP, FCP, LCP, DCL, FMP, TTI, TBT, FID, CLS)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/12/19/Mac安装php-redis操作步骤以及遇到的问题记录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac安装php-redis操作步骤以及遇到的问题记录</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_qzone"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share?uid=2120416" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript">
+		var jiathis_config = {data_track_clickback:'true'};
+	</script>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2120416" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="面试问题和回答简单整理" data-title="面试问题和解答简单整理" data-url="https://songyazhao.github.io/2020/02/21/面试问题和回答简单整理/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"songyazhao"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2020 糖醋里脊叉烧包
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/winnerweb/hexo-Yilia-Smackdown" target="_blank">Yilia(Smackdown)</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
