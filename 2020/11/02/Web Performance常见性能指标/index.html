@@ -17,15 +17,19 @@
 <meta property="og:site_name" content="酷酷哒小站">
 <meta property="og:description" content="FP (First Paint) 首次绘制标记浏览器渲染任何在视觉上不同于导航前屏幕内容之内容的时间点。 FCP (First Contentful Paint) 首次内容绘制标记浏览器渲染来自 DOM 第一位内容的时间点，该内容可能是文本、图像、SVG 甚至 元素。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/FCP.png">
+<meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/LCP-1.png">
+<meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/LCP-2.png">
 <meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/TBT-1.png">
 <meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/TBT-2.png">
-<meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/FID.webp">
+<meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/FID-1.webp">
+<meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/FID-2.png">
 <meta property="og:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/CLS.png">
-<meta property="og:updated_time" content="2020-11-02T07:28:06.297Z">
+<meta property="og:updated_time" content="2020-11-02T07:54:15.460Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web Performance常见性能指标(FP, FCP, LCP, DCL, FMP, TTI, TBT, FID, CLS)">
 <meta name="twitter:description" content="FP (First Paint) 首次绘制标记浏览器渲染任何在视觉上不同于导航前屏幕内容之内容的时间点。 FCP (First Contentful Paint) 首次内容绘制标记浏览器渲染来自 DOM 第一位内容的时间点，该内容可能是文本、图像、SVG 甚至 元素。">
-<meta name="twitter:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/TBT-1.png">
+<meta name="twitter:image" content="https://songyazhao.github.io/2020/11/02/Web%20Performance常见性能指标/FCP.png">
   
     <link rel="alternative" href="/atom.xml" title="酷酷哒小站" type="application/atom+xml">
   
@@ -297,20 +301,24 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="FP-First-Paint-首次绘制"><a href="#FP-First-Paint-首次绘制" class="headerlink" title="FP (First Paint) 首次绘制"></a>FP (First Paint) 首次绘制</h2><p>标记浏览器渲染任何在视觉上不同于导航前屏幕内容之内容的时间点。</p>
-<h2 id="FCP-First-Contentful-Paint-首次内容绘制"><a href="#FCP-First-Contentful-Paint-首次内容绘制" class="headerlink" title="FCP (First Contentful Paint) 首次内容绘制"></a>FCP (First Contentful Paint) 首次内容绘制</h2><p>标记浏览器渲染来自 DOM 第一位内容的时间点，该内容可能是文本、图像、SVG 甚至 元素。</p>
+<h2 id="FCP-First-Contentful-Paint-首次内容绘制"><a href="#FCP-First-Contentful-Paint-首次内容绘制" class="headerlink" title="FCP (First Contentful Paint) 首次内容绘制"></a>FCP (First Contentful Paint) 首次内容绘制</h2><p>标记浏览器渲染来自 DOM 第一位内容的时间点，该内容可能是文本、图像、SVG 甚至 元素。<br><img src="/2020/11/02/Web Performance常见性能指标/FCP.png" alt="FCP"></p>
 <a id="more"></a>
-<h2 id="LCP-Largest-Contentful-Paint-最大内容渲染"><a href="#LCP-Largest-Contentful-Paint-最大内容渲染" class="headerlink" title="LCP (Largest Contentful Paint) 最大内容渲染"></a>LCP (Largest Contentful Paint) 最大内容渲染</h2><p>代表在viewport中最大的页面元素加载的时间. LCP的数据会通过PerformanceEntry对象记录, 每次出现更大的内容渲染, 则会产生一个新的PerformanceEntry对象.(2019年11月新增)。</p>
+<h2 id="LCP-Largest-Contentful-Paint-最大内容渲染"><a href="#LCP-Largest-Contentful-Paint-最大内容渲染" class="headerlink" title="LCP (Largest Contentful Paint) 最大内容渲染"></a>LCP (Largest Contentful Paint) 最大内容渲染</h2><p>衡量viewport内可见的最大内容元素的渲染时间。元素包括img、video、div及其他块级元素。<br>LCP的数据会通过PerformanceEntry对象记录, 每次出现更大的内容渲染, 则会产生一个新的PerformanceEntry对象.(2019年11月新增)。<br><img src="/2020/11/02/Web Performance常见性能指标/LCP-1.png" alt="LCP-1"></p>
+<p>根据google建议，为了给用户提供更好的产品体验，LCP应该低于2.5s。<br><img src="/2020/11/02/Web Performance常见性能指标/LCP-2.png" alt="LCP-2"></p>
 <h2 id="DCL-DomContentloaded"><a href="#DCL-DomContentloaded" class="headerlink" title="DCL (DomContentloaded)"></a>DCL (DomContentloaded)</h2><p>当 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发，无需等待样式表、图像和子框架的完成加载。</p>
 <h2 id="FMP-First-Meaningful-Paint-首次有效绘制"><a href="#FMP-First-Meaningful-Paint-首次有效绘制" class="headerlink" title="FMP(First Meaningful Paint) 首次有效绘制"></a>FMP(First Meaningful Paint) 首次有效绘制</h2><p>页面主角元素的首次有效绘制。例如，在 bilibili 上，主角元素就是视频元素；微博的博文是主要元素。</p>
 <h2 id="L-onLoad"><a href="#L-onLoad" class="headerlink" title="L (onLoad)"></a>L (onLoad)</h2><p>页面的onLoad时的时间点。当依赖的资源, 全部加载完毕之后才会触发。</p>
-<h2 id="TTI-Time-to-Interactive-可交互时间"><a href="#TTI-Time-to-Interactive-可交互时间" class="headerlink" title="TTI (Time to Interactive) 可交互时间"></a>TTI (Time to Interactive) 可交互时间</h2><p>指标用于标记应用已进行视觉渲染并能可靠响应用户输入的时间点。</p>
-<h2 id="TBT-Total-Blocking-Time-页面阻塞总时长"><a href="#TBT-Total-Blocking-Time-页面阻塞总时长" class="headerlink" title="TBT (Total Blocking Time) 页面阻塞总时长"></a>TBT (Total Blocking Time) 页面阻塞总时长</h2><p>TBT汇总所有加载过程中阻塞用户操作的时长，在FCP和TTI之间任何long task中阻塞部分都会被汇总。<br>来个例子说明一下:<br><img src="/2020/11/02/Web Performance常见性能指标/TBT-1.png" alt="TBT-1"><br><img src="/2020/11/02/Web Performance常见性能指标/TBT-2.png" alt="TBT-2"><br>在主线程上运行任务所花费的总时间为560毫秒，但只有345(200 + 40 + 105)毫秒的时间被视为阻塞时间(超过50ms的Task都会被记录).</p>
-<h2 id="FID-First-Input-Delay-首次输入延迟"><a href="#FID-First-Input-Delay-首次输入延迟" class="headerlink" title="FID (First Input Delay) 首次输入延迟"></a>FID (First Input Delay) 首次输入延迟</h2><p>FID (First Input Delay) 首次输入延迟: 指标衡量的是从用户首次与您的网站进行交互（即当他们单击链接，点击按钮等）到浏览器实际能够访问之间的时间, 下面来张图来解释FID和TTI的区别:<br><img src="/2020/11/02/Web Performance常见性能指标/FID.webp" alt="FID"></p>
+<h2 id="TTI-Time-to-Interactive-可交互时间"><a href="#TTI-Time-to-Interactive-可交互时间" class="headerlink" title="TTI (Time to Interactive) 可交互时间"></a>TTI (Time to Interactive) 可交互时间</h2><p>用于标记应用已进行视觉渲染并能可靠响应用户输入的时间点。</p>
+<h2 id="TBT-Total-Blocking-Time-页面阻塞总时长"><a href="#TBT-Total-Blocking-Time-页面阻塞总时长" class="headerlink" title="TBT (Total Blocking Time) 页面阻塞总时长"></a>TBT (Total Blocking Time) 页面阻塞总时长</h2><p>TBT汇总所有加载过程中阻塞用户操作的时长，在FCP和TTI之间任何long task中阻塞部分都会被汇总。<br>来个例子说明一下:<br><img src="/2020/11/02/Web Performance常见性能指标/TBT-1.png" alt="TBT-1"><br>上图，有三个长任务，两个短任务。<br><img src="/2020/11/02/Web Performance常见性能指标/TBT-2.png" alt="TBT-2"><br>在主线程上运行任务所花费的总时间为560毫秒，但TBT只有345(200 + 40 + 105)毫秒的时间，被视为阻塞时间(超过50ms的Task都会被记录).</p>
+<h2 id="FID-First-Input-Delay-首次输入延迟"><a href="#FID-First-Input-Delay-首次输入延迟" class="headerlink" title="FID (First Input Delay) 首次输入延迟"></a>FID (First Input Delay) 首次输入延迟</h2><p>FID (First Input Delay) 首次输入延迟: 指标衡量的是从用户首次与您的网站进行交互（即当他们单击链接，点击按钮等）到浏览器实际能够访问之间的时间, 下面来张图来解释FID和TTI的区别:<br><img src="/2020/11/02/Web Performance常见性能指标/FID-1.webp" alt="FID-1"></p>
+<p>根据google建议，为了给用户提供更好的产品体验，FID应该低于100ms。<br><img src="/2020/11/02/Web Performance常见性能指标/FID-2.png" alt="FID-2"></p>
 <h2 id="CLS-Cumulative-Layout-Shift-累积布局偏移"><a href="#CLS-Cumulative-Layout-Shift-累积布局偏移" class="headerlink" title="CLS (Cumulative Layout Shift) 累积布局偏移"></a>CLS (Cumulative Layout Shift) 累积布局偏移</h2><p>CLS (Cumulative Layout Shift) 累积布局偏移: 总结起来就是一个元素初始时和其hidden之间的任何时间如果元素偏移了, 则会被计算进去, 具体的计算方法可看这篇文章 [<a href="https://web.dev/cls/]" target="_blank" rel="noopener">https://web.dev/cls/]</a></p>
 <p><img src="/2020/11/02/Web Performance常见性能指标/CLS.png" alt="FID"></p>
 <h2 id="SI-Speed-Index"><a href="#SI-Speed-Index" class="headerlink" title="SI (Speed Index)"></a>SI (Speed Index)</h2><p>SI (Speed Index): 指标用于显示页面可见部分的显示速度, 单位是时间,</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li>(什么是第一输入延迟(First Input Delay))[<a href="https://www.imqianduan.com/tool/fid.html]" target="_blank" rel="noopener">https://www.imqianduan.com/tool/fid.html]</a></li>
+<h2 id="参考阅读"><a href="#参考阅读" class="headerlink" title="参考阅读"></a>参考阅读</h2><ol>
+<li><a href="https://www.imqianduan.com/tool/fid.html" target="_blank" rel="noopener">什么是第一输入延迟(First Input Delay)</a></li>
+<li><a href="https://www.w3cplus.com/performance/paint-timing-api.html" target="_blank" rel="noopener">使用 Paint Timing API</a></li>
+<li><a href="https://www.codercto.com/a/40349.html" target="_blank" rel="noopener">前端监控实践——FMP的智能获取算法</a></li>
 </ol>
 
       
